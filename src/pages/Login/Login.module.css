@@ -1,3 +1,5 @@
+/* ESTILOS TELA DE LOGIN - MOBILE FIRST */
+
 * {
   margin: 0;
   padding: 0;
@@ -6,20 +8,24 @@
 
 .loginContainer {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   width: 100%;
-  background: #F5F5F5;
+  background: rgba(140, 73, 13, 1);
+  overflow: hidden;
 }
 
-/* Coluna Esquerda - Arte */
+/* Coluna Esquerda - Arte (Mobile) */
 .leftColumn {
-  display: none;
+  display: flex;
   background: rgba(140, 73, 13, 1);
   position: relative;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0 0 0;
   overflow: hidden;
+  min-height: 35vh;
 }
 
 .artworkContainer {
@@ -27,19 +33,17 @@
   align-items: center;
   justify-content: center;
   flex: 1;
-  padding: 3rem;
+  width: 100%;
 }
 
 .artwork {
-  width: 90%;
-  max-width: 600px;
+  width: 100%;
+  max-width: 400px;
   height: auto;
 }
 
 .logoContainer {
-  position: absolute;
-  bottom: 3rem;
-  left: 3rem;
+  display: none;
 }
 
 .logoContainer svg {
@@ -47,35 +51,39 @@
   height: auto;
 }
 
-/* Coluna Direita - Formulário */
+/* Coluna Direita - Formulário (Mobile) */
 .rightColumn {
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  background: #F5F5F5;
-  padding: 2rem;
+  width: 100%;
+  padding: 0;
+  background: transparent;
 }
 
 .formCard {
   width: 100%;
-  max-width: 450px;
-  background: #FFFFFF;
-  padding: 3rem 2.5rem;
+  max-width: none;
+  background: #ffffff;
+  padding: 2.5rem 1.5rem;
+  border-radius: 40px 40px 0 0;
+  min-height: 65vh;
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: #F78520;
-  margin-bottom: 2.5rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  color: #f78520;
+  margin-bottom: 2rem;
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", sans-serif;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 1.5rem;
 }
 
 .formGroup {
@@ -87,8 +95,9 @@
 .label {
   font-size: 1rem;
   font-weight: 700;
-  color: #F78520;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  color: #f78520;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
 }
 
 .input {
@@ -96,21 +105,22 @@
   padding: 0.875rem 1.25rem;
   font-size: 0.9rem;
   color: #333333;
-  background: #FFFFFF;
-  border: 2px solid #F78520;
+  background: #ffffff;
+  border: 2px solid #f78520;
   border-radius: 30px;
   outline: none;
   transition: all 0.3s ease;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
 }
 
 .input:focus {
-  border-color: #F78520;
+  border-color: #f78520;
   box-shadow: 0 0 0 3px rgba(247, 133, 32, 0.1);
 }
 
 .input::placeholder {
-  color: #BBBBBB;
+  color: #bbbbbb;
 }
 
 .passwordWrapper {
@@ -151,11 +161,12 @@
 
 .link {
   font-size: 0.9rem;
-  color: #F78520;
+  color: #f78520;
   text-decoration: none;
   font-weight: 600;
   transition: opacity 0.2s;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
 }
 
 .link:hover {
@@ -167,18 +178,19 @@
   padding: 0.75rem 2.5rem;
   font-size: 1rem;
   font-weight: 700;
-  color: #FFFFFF;
-  background: #F78520;
+  color: #ffffff;
+  background: #f78520;
   border: none;
   border-radius: 30px;
   cursor: pointer;
   margin-top: 0.5rem;
   transition: all 0.3s ease;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
 }
 
 .submitButton:hover {
-  background: #E67510;
+  background: #e67510;
   transform: translateY(-1px);
 }
 
@@ -186,85 +198,120 @@
   transform: translateY(0);
 }
 
-/* Responsividade Desktop */
-@media (min-width: 768px) {
-  .loginContainer {
-    background: #FFFFFF;
-  }
+/*RESPONSIVIDADE - TELA DE LOGIN*/
 
+/* ESTILOS TABLET (576px+) */
+
+@media (min-width: 576px) {
   .leftColumn {
-    display: flex;
-    width: 50%;
-  }
-
-  .rightColumn {
-    width: 50%;
-    background: #FFFFFF;
-  }
-
-  .formCard {
-    background: #FFFFFF;
-    padding: 4rem 3rem;
-  }
-}
-
-/* Mobile */
-@media (max-width: 767px) {
-  .loginContainer {
-    flex-direction: column;
-    background: #F5F5F5;
-  }
-
-  .leftColumn {
-    display: flex;
-    width: 100%;
-    min-height: 300px;
-    background: #8B5A3C;
-    padding: 2rem 1rem;
-    position: relative;
-  }
-
-  .artworkContainer {
-    padding: 1rem;
+    min-height: 40vh;
   }
 
   .artwork {
-    width: 70%;
-    max-width: 280px;
-  }
-
-  .logoContainer {
-    bottom: 2rem;
-    left: 2rem;
-  }
-
-  .logoContainer svg {
-    width: 150px;
+    max-width: 500px;
   }
 
   .rightColumn {
-    background: #F5F5F5;
-    padding: 0;
-    align-items: flex-start;
-    min-height: calc(100vh - 300px);
+    padding: 2rem;
+    background: rgba(140, 73, 13, 1);
   }
 
   .formCard {
-    width: 100%;
-    border-radius: 30px 30px 0 0;
-    padding: 2.5rem 2rem;
-    margin-top: -30px;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
-    background: #FFFFFF;
+    margin: 2rem auto;
+    border-radius: 40px;
+    max-width: 450px;
+    min-height: auto;
+    padding: 3rem 2.5rem;
   }
 
   .title {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
+  }
+}
+
+/* ESTILOS DESKTOP (768px+) */
+
+@media (min-width: 768px) {
+  .loginContainer {
+    flex-direction: row;
   }
 
-  .submitButton {
-    align-self: center;
-    width: auto;
-    min-width: 140px;
+  .leftColumn {
+    display: flex;
+    width: 65%;
+    min-height: 100vh;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .artworkContainer {
+    margin-left: -250px;
+    transform: rotate(3deg);
+    justify-content: flex-start;
+  }
+
+  .artwork {
+    max-width: 900px;
+  }
+
+  .logoContainer {
+    display: block;
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+  }
+
+  .rightColumn {
+    width: 60%;
+    background: #ffffff;
+    border-radius: 40px 0 0 40px;
+    padding: 2rem;
+    align-items: center;
+  }
+
+  .formCard {
+    background: #ffffff;
+    padding: 4rem 3rem;
+    margin: 0;
+    border-radius: 0;
+    max-width: 450px;
+    min-height: auto;
+  }
+
+  .title {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .form {
+    gap: 1.75rem;
+  }
+}
+
+/* ESTILOS DESKTOP LARGE (1024px+) */
+
+@media (min-width: 1024px) {
+  .leftColumn {
+    width: 50%;
+  }
+
+  .rightColumn {
+    width: 50%;
+  }
+}
+
+/* TELAS GRANDES (1440px+) */
+
+@media (min-width: 1440px) {
+  .leftColumn {
+    width: 55%;
+  }
+
+  .rightColumn {
+    width: 45%;
+  }
+
+  .formCard {
+    max-width: 500px;
   }
 }
