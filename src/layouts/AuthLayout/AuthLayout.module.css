@@ -1,0 +1,181 @@
+/* CSS Global Para telas de autenticação */
+
+* {
+  box-sizing: border-box;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  background: rgba(140, 73, 13, 1);
+  overflow: hidden;
+}
+
+/* Left column (art/visual) - mobile first */
+.leftColumn {
+  display: flex;
+  background: rgba(140, 73, 13, 1);
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0 0 0;
+  overflow: hidden;
+  min-height: 35vh;
+}
+
+.artworkContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  flex: 1;
+  width: 100%;
+  margin-left: 270px;
+  width: 650px;
+  transform: rotate(5deg);
+}
+
+.artwork {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+}
+
+.logoContainer {
+  display: none;
+}
+
+.logoContainer svg {
+  width: 200px;
+  height: auto;
+}
+
+/* Right column (form) - mobile */
+.rightColumn {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+}
+
+.formCard {
+  width: 100%;
+  max-width: none;
+  background: #ffffff;
+  padding: 2.5rem 1.5rem;
+  border-radius: 40px 40px 0 0;
+  min-height: 65vh;
+}
+
+/* Tablet tweaks */
+@media (min-width: 576px) {
+  .leftColumn {
+    min-height: 40vh;
+  }
+
+  .artwork {
+    max-width: 500px;
+  }
+
+  .rightColumn {
+    padding: 2rem;
+    background: rgba(140, 73, 13, 1);
+  }
+
+  .formCard {
+    margin: 2rem auto;
+    border-radius: 40px;
+    max-width: 450px;
+    min-height: auto;
+    padding: 3rem 2.5rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .loginContainer {
+    flex-direction: row;
+  }
+
+  .leftColumn {
+    display: flex;
+    width: 65%;
+    min-height: 100vh;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  /* Arte padrão para as páginas (exceto login) */
+  .artworkContainer {
+    margin-bottom: 10%;
+    margin-left: 270px;
+    width: 990px;
+    transform: rotate(5deg);
+    justify-content: flex-end;
+  }
+
+  .artwork {
+    max-width: 990px;
+    height: auto;
+  }
+
+  .logoContainer {
+    display: block;
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+  }
+
+  .rightColumn {
+    width: 60%;
+    background: #ffffff;
+    border-radius: 40px 0 0 40px;
+    padding: 2rem;
+    align-items: center;
+  }
+
+  .formCard {
+    background: #ffffff;
+    padding: 4rem 3rem;
+    margin: 0;
+    border-radius: 0;
+    max-width: 450px;
+    min-height: auto;
+  }
+
+  /* Variant that the Login page requests. Only include the properties that differ. */
+  .variantLogin {
+    margin-left: -250px;
+    transform: rotate(5deg);
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 1024px) {
+  .leftColumn {
+    width: 50%;
+  }
+
+  .rightColumn {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .leftColumn {
+    width: 55%;
+  }
+
+  .rightColumn {
+    width: 45%;
+  }
+
+  .formCard {
+    max-width: 500px;
+  }
+}

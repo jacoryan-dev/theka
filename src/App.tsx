@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from './pages/Login/Login';
+import RecuperarSenha from './pages/RecuperarSenha/RecuperarSenha.tsx';
+import Login from './pages/Login/Login.tsx';
 import './App.css'
-import './pages/Login/Login.module.css'
 
 const App = () => {
 
@@ -9,6 +9,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/RecuperarSenha" element={<RecuperarSenha />} />
       </Routes>
     </Router>
   );
