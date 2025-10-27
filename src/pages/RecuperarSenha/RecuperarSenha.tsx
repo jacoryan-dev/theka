@@ -5,6 +5,7 @@ import React, { useState } from "react";
 const RecuperarSenha: React.FC = () => {
   const [email, setEmail] = useState("");
   const handleSubmit = (e: React.FormEvent) => {
+
     e.preventDefault();
     console.log("E-mail para recuperação de senha:", email);
   };
@@ -26,7 +27,7 @@ const RecuperarSenha: React.FC = () => {
         />
         <div className={styles.buttonContainer}>
         <button className={styles.prevButton} type="button" onClick={() => window.history.back()}>Voltar</button>
-        <button className={styles.submitButton} type="submit">Enviar</button>
+        <button className={styles.submitButton} type="submit" >Enviar</button>
         </div>
       </form>
     </AuthLayout>

@@ -19,7 +19,7 @@ const Login: React.FC = () => {
 
   return (
     
-    <AuthLayout variant="login">
+    <AuthLayout variant="Login">
       <h1 className={styles.title}>Login</h1>
 
       <form onSubmit={handleSubmit} className={styles.form}>
@@ -78,7 +78,7 @@ const Login: React.FC = () => {
           <a href="/RecuperarSenha" className={styles.link}>
             Esqueceu a senha?
           </a>
-          <a href="#" className={styles.link}>
+          <a href="/Cadastro" className={styles.link}>
             Ainda não tem cadastro?
           </a>
         </div>

@@ -5,7 +5,7 @@ import cx from "classnames"; // Para mesclar as classes
 // props
 type AuthLayoutProps = {
   children: React.ReactNode;
-  variant?: "login" | "default"; // A variante pode ser 'login' ou 'default'
+  variant?: "Login" | "default"; // A variante pode ser 'Login' ou 'default'
 };
 
 const AuthLayout: React.FC<AuthLayoutProps> = ({
@@ -19,7 +19,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
         {/* Container da arte — aplica variação quando variant === 'login' */}
         <div
           className={cx(styles.artworkContainer, {
-            [styles.variantLogin]: variant === "login",
+            [styles.variantLogin]: variant === "Login",
           })}
         >
           {/* SVG da arte */}

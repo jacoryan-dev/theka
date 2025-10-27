@@ -1,0 +1,196 @@
+/* NAVBAR STYLES (MOBILE-FIRST) */
+
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.navbarContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo Desktop (oculto no mobile) */
+.logoDesktop {
+  display: none;
+}
+
+/* Logo Mobile (visível no mobile) */
+.logoMobile {
+  display: block;
+  line-height: 0;
+}
+
+.logoMobile svg {
+  height: 40px;
+  width: auto;
+}
+
+/* Hamburger Menu (Mobile) */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #333333;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.hamburger span.open:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger span.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger span.open:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Navigation Links (Mobile) */
+.navLinks {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background-color: #ffffff;
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 2rem 2rem;
+  gap: 1.5rem;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+.navLinks.navLinksOpen {
+  right: 0;
+}
+
+.navLinks a {
+  color: #333333;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  transition: color 0.3s ease;
+}
+
+.navLinks a:hover {
+  color: #81013a;
+}
+
+.navLinks a.active {
+  color: #81013a;
+  font-weight: 600;
+}
+
+/* TABLET (768px+) */
+
+@media (min-width: 768px) {
+  .navbar {
+    padding: 1.25rem 0;
+  }
+
+  .container {
+    padding: 0 2rem;
+  }
+
+  /* Esconde hamburger no desktop */
+  .hamburger {
+    display: none;
+  }
+
+  /* Logo Desktop (visível no desktop) */
+  .logoDesktop {
+    display: block;
+    line-height: 0;
+  }
+
+  .logoDesktop svg {
+    height: 50px;
+    width: auto;
+  }
+
+  /* Logo Mobile (oculto no desktop) */
+  .logoMobile {
+    display: none;
+  }
+
+  /* Navigation Links (Desktop) */
+  .navLinks {
+    position: static;
+    width: auto;
+    max-width: none;
+    height: auto;
+    background-color: transparent;
+    box-shadow: none;
+    flex-direction: row;
+    padding: 0;
+    gap: 2rem;
+  }
+
+  .navLinks a {
+    font-size: 1rem;
+    padding: 0;
+    border-bottom: none;
+    position: relative;
+  }
+
+  .navLinks a::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #81013a;
+    transition: width 0.3s ease;
+  }
+
+  .navLinks a:hover::after,
+  .navLinks a.active::after {
+    width: 100%;
+  }
+}
+
+/* DESKTOP (1024px+) */
+
+@media (min-width: 1024px) {
+  .logoDesktop svg {
+    height: 60px;
+  }
+
+  .navLinks {
+    gap: 2.5rem;
+  }
+
+  .navLinks a {
+    font-size: 1.05rem;
+  }
+}
