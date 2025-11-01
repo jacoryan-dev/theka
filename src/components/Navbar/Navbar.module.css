@@ -21,6 +21,11 @@
   align-items: center;
 }
 
+/* Estado ativo para paths do SVG (desktop) */
+.activePath {
+  fill: #81013a !important;
+}
+
 /* Logo Desktop (oculto no mobile) */
 .logoDesktop {
   display: none;
@@ -110,6 +115,63 @@
   font-weight: 600;
 }
 
+/* SVG dos links: oculto no mobile, visível no desktop */
+.navLinksSvg {
+  display: none;
+}
+
+/* Lista textual de links (somente mobile) */
+.mobileList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.mobileList li + li {
+  margin-top: 0.25rem;
+}
+
+/* Backdrop para o menu mobile */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 998;
+}
+
+/* Botão Logout (Mobile) */
+.logoutButton {
+  background: none;
+  border: none;
+  color: #333333;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.logoutButton:hover {
+  color: #81013a;
+}
+
+/* Ícone oculto no mobile */
+.logoutIcon {
+  display: none;
+}
+
+/* Texto "Sair" visível no mobile */
+.logoutText {
+  display: inline;
+}
+
 /* TABLET (768px+) */
 
 @media (min-width: 768px) {
@@ -153,6 +215,16 @@
     flex-direction: row;
     padding: 0;
     gap: 2rem;
+    flex: 1;
+    justify-content: center;
+  }
+
+  /* Mostrar SVG e ocultar lista textual no desktop */
+  .navLinksSvg {
+    display: block;
+  }
+  .mobileList {
+    display: none;
   }
 
   .navLinks a {
@@ -176,6 +248,31 @@
   .navLinks a:hover::after,
   .navLinks a.active::after {
     width: 100%;
+  }
+
+  /* Botão Logout (Desktop) */
+  .logoutButton {
+    padding: 0;
+    border-bottom: none;
+    font-size: 1rem;
+  }
+
+  /* Ícone visível no desktop */
+  .logoutIcon {
+    display: block;
+    width: 26px;
+    height: 26px;
+    color: #5a5a5a;
+    transition: color 0.3s ease;
+  }
+
+  .logoutButton:hover .logoutIcon {
+    color: #81013a;
+  }
+
+  /* Texto "Sair" oculto no desktop */
+  .logoutText {
+    display: none;
   }
 }
 

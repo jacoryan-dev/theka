@@ -6,7 +6,9 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.footerContent}>
-          {/* Logo */}
+          {/* Navigation Links */}
+          <div className={styles.footerLinks}>
+            {/* Logo */}
           <div className={styles.footerLogo}>
             <svg
               width="237"
@@ -48,9 +50,6 @@ export default function Footer() {
               </defs>
             </svg>
           </div>
-
-          {/* Navigation Links */}
-          <div className={styles.footerLinks}>
             <div className={styles.linkColumn}>
               <h4>Contato</h4>
               <a href="tel:+5584999992222">
@@ -174,7 +173,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <div className={styles.footerBottom}>
-            <p>Website desenvolvido por EJECT</p>
+            <p>Website desenvolvido por Jacó Ryan</p>
           </div>
         </div>
       </div>

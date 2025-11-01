@@ -21,26 +21,17 @@ export default function Contato() {
           {/* Seção do Mapa - Coluna Esquerda */}
           <div className={styles.mapSection}>
             <div className={styles.mapPlaceholder}>
-              {/* Placeholder do mapa - em produção, use Google Maps API */}
-              <svg
+              {/* Iframe do Google Maps (Natal Shopping) */}
+              <iframe
+                title="Natal Shopping - Google Maps"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.10026718908!2d-35.21311618943405!3d-5.841490194117363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2ff7f3f79710b%3A0xf5c081aadff4a4d9!2sNatal%20Shopping%20-%20Avenida%20Senador%20Salgado%20Filho%2C%202234%20-%20Lagoa%20Nova%2C%20Natal%20-%20RN%2C%20Brasil!5e0!3m2!1spt-BR!2sbr!4v1762022087720!5m2!1spt-BR!2sbr"
                 width="100%"
                 height="100%"
-                viewBox="0 0 400 300"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="400" height="300" fill="#E5E5E5" />
-                <text
-                  x="50%"
-                  y="50%"
-                  textAnchor="middle"
-                  fill="#999"
-                  fontSize="18"
-                  fontFamily="sans-serif"
-                >
-                  Google Maps
-                </text>
-              </svg>
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
 
             <div className={styles.buttonsGroup}>

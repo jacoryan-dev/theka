@@ -6,6 +6,7 @@ import RedefinirSenha from "./pages/RedefinirSenha/RedefinirSenha.tsx";
 import Cadastro from "./pages/Cadastro/Cadastro.tsx";
 import Contato from "./pages/Contato/Contato.tsx";
 import MainLayout from "./layouts/MainLayout/MainLayout.tsx";
+import SobreNos from "./pages/SobreNos/SobreNos.tsx";
 
 const App = () => {
   return (
@@ -23,6 +24,14 @@ const App = () => {
           element={
             <MainLayout>
               <Contato />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/SobreNos"
+          element={
+            <MainLayout>
+              <SobreNos />
             </MainLayout>
           }
         />
