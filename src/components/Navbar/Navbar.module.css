@@ -1,12 +1,16 @@
 /* NAVBAR STYLES (MOBILE-FIRST) */
 
 .navbar {
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
   padding: 1rem 0;
+  background: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.navbar.pink {
+  background: #bf0259;
 }
 
 .container {
@@ -18,31 +22,62 @@
 .navbarContent {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  position: relative;
 }
 
-/* Estado ativo para paths do SVG (desktop) */
-.activePath {
-  fill: #81013a !important;
-}
+/* ========== LOGO BUBBLE (VISIBLE ON ALL SCREENS) ========== */
 
-/* Logo Desktop (oculto no mobile) */
-.logoDesktop {
-  display: none;
-}
-
-/* Logo Mobile (visível no mobile) */
-.logoMobile {
+.logoBubble {
   display: block;
-  line-height: 0;
+  text-decoration: none;
+  position: relative;
+  z-index: 1002;
 }
 
-.logoMobile svg {
+.logoBubble .bubbleShape {
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.logoBubble:hover .bubbleShape {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.logoIcon {
+  width: 40px;
   height: 40px;
-  width: auto;
+  color: #5a5a5a;
+  transition: color 0.3s ease;
 }
 
-/* Hamburger Menu (Mobile) */
+/* ========== VARIANTS - LOGO COLOR ========== */
+
+.navbar.light .logoIcon {
+  color: #5a5a5a;
+}
+
+.navbar.dark .logoIcon {
+  color: #333333;
+}
+
+.navbar.pink .logoIcon {
+  color: #ffffff;
+}
+
+/* ========== HAMBURGER MENU (MOBILE) ========== */
+
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -51,7 +86,8 @@
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  z-index: 1001;
+  z-index: 1002;
+  position: relative;
 }
 
 .hamburger span {
@@ -60,6 +96,10 @@
   background-color: #333333;
   transition: all 0.3s ease;
   border-radius: 2px;
+}
+
+.navbar.pink .hamburger span {
+  background-color: #ffffff;
 }
 
 .hamburger span.open:nth-child(1) {
@@ -74,113 +114,179 @@
   transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* Navigation Links (Mobile) */
-.navLinks {
+/* ========== NAV BUBBLE (MOBILE DRAWER) ========== */
+
+.navBubble {
   position: fixed;
   top: 0;
   right: -100%;
-  width: 80%;
-  max-width: 300px;
+  width: 85%;
+  max-width: 350px;
   height: 100vh;
-  background-color: #ffffff;
-  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  padding: 5rem 2rem 2rem;
-  gap: 1.5rem;
-  transition: right 0.3s ease;
-  z-index: 999;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.15);
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1001;
+  overflow-y: auto;
 }
 
-.navLinks.navLinksOpen {
+.navBubble.navBubbleOpen {
   right: 0;
 }
 
-.navLinks a {
-  color: #333333;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #f0f0f0;
-  transition: color 0.3s ease;
+.navBubble .bubbleShape {
+  padding: 6rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
 }
 
-.navLinks a:hover {
+/* ========== MOBILE LOGO HEADER ========== */
+
+.mobileLogoHeader {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.thekaText {
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #5a5a5a;
+  letter-spacing: -0.02em;
+}
+
+.navbar.pink .thekaText {
   color: #81013a;
 }
 
-.navLinks a.active {
-  color: #81013a;
-  font-weight: 600;
-}
+/* ========== NAV LIST (MOBILE) ========== */
 
-/* SVG dos links: oculto no mobile, visível no desktop */
-.navLinksSvg {
-  display: none;
-}
-
-/* Lista textual de links (somente mobile) */
-.mobileList {
+.navList {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-}
-.mobileList li + li {
-  margin-top: 0.25rem;
+  gap: 0.25rem;
 }
 
-/* Backdrop para o menu mobile */
-.backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 998;
+.navLink {
+  display: block;
+  color: #333333;
+  text-decoration: none;
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  letter-spacing: -0.01em;
 }
 
-/* Botão Logout (Mobile) */
+.navLink:hover {
+  background: rgba(129, 1, 58, 0.08);
+  color: #81013a;
+  transform: translateX(4px);
+}
+
+.navLink.active {
+  background: rgba(129, 1, 58, 0.12);
+  color: #81013a;
+  font-weight: 600;
+}
+
+/* ========== LOGOUT BUTTON (MOBILE) ========== */
+
 .logoutButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   background: none;
   border: none;
   color: #333333;
-  text-decoration: none;
-  font-size: 1.1rem;
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-size: 1.25rem;
   font-weight: 500;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #f0f0f0;
-  transition: color 0.3s ease;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  transition: all 0.3s ease;
   text-align: left;
+  margin-top: auto;
+  letter-spacing: -0.01em;
 }
 
 .logoutButton:hover {
+  background: rgba(129, 1, 58, 0.08);
   color: #81013a;
+  transform: translateX(4px);
 }
 
-/* Ícone oculto no mobile */
 .logoutIcon {
-  display: none;
+  width: 22px;
+  height: 22px;
+  color: currentColor;
 }
 
-/* Texto "Sair" visível no mobile */
 .logoutText {
   display: inline;
 }
 
-/* TABLET (768px+) */
+/* ========== BACKDROP ========== */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ========================================== */
+/* ========== TABLET (768px+) ========== */
+/* ========================================== */
 
 @media (min-width: 768px) {
   .navbar {
-    padding: 1.25rem 0;
+    padding: 1.5rem 0;
   }
 
   .container {
     padding: 0 2rem;
+  }
+
+  .navbarContent {
+    align-items: center;
+  }
+
+  /* Logo bubble aumentado */
+  .logoBubble .bubbleShape {
+    width: 72px;
+    height: 72px;
+  }
+
+  .logoIcon {
+    width: 48px;
+    height: 48px;
   }
 
   /* Esconde hamburger no desktop */
@@ -188,53 +294,77 @@
     display: none;
   }
 
-  /* Logo Desktop (visível no desktop) */
-  .logoDesktop {
-    display: block;
-    line-height: 0;
-  }
-
-  .logoDesktop svg {
-    height: 50px;
-    width: auto;
-  }
-
-  /* Logo Mobile (oculto no desktop) */
-  .logoMobile {
-    display: none;
-  }
-
-  /* Navigation Links (Desktop) */
-  .navLinks {
+  /* NAV BUBBLE VIRA HORIZONTAL NO DESKTOP */
+  .navBubble {
     position: static;
     width: auto;
     max-width: none;
     height: auto;
-    background-color: transparent;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
     box-shadow: none;
-    flex-direction: row;
-    padding: 0;
-    gap: 2rem;
     flex: 1;
+    display: flex;
     justify-content: center;
+    margin-left: 2rem;
+    overflow-y: visible;
   }
 
-  /* Mostrar SVG e ocultar lista textual no desktop */
-  .navLinksSvg {
-    display: block;
+  .navBubble .bubbleShape {
+    padding: 0.75rem 3rem;
+    height: auto;
+    min-width: auto;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    transition: all 0.3s ease;
   }
-  .mobileList {
+
+  /* Esconde logo mobile no desktop */
+  .mobileLogoHeader {
     display: none;
   }
 
-  .navLinks a {
+  /* Nav List horizontal */
+  .navList {
+    flex-direction: row;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .navLink {
     font-size: 1rem;
+    font-weight: 700;
     padding: 0;
-    border-bottom: none;
+    background: transparent;
+    color: #5a5a5a;
     position: relative;
   }
 
-  .navLinks a::after {
+  .navbar.pink .navLink {
+    color: #ffffff;
+  }
+
+  .navLink:hover {
+    background: transparent;
+    color: #81013a;
+    transform: none;
+  }
+
+  .navbar.pink .navLink:hover {
+    color: #ffffff;
+    opacity: 0.8;
+  }
+
+  .navLink::after {
     content: "";
     position: absolute;
     bottom: -6px;
@@ -245,49 +375,117 @@
     transition: width 0.3s ease;
   }
 
-  .navLinks a:hover::after,
-  .navLinks a.active::after {
+  .navbar.pink .navLink::after {
+    background-color: #ffffff;
+  }
+
+  .navLink:hover::after,
+  .navLink.active::after {
     width: 100%;
   }
 
-  /* Botão Logout (Desktop) */
-  .logoutButton {
-    padding: 0;
-    border-bottom: none;
-    font-size: 1rem;
+  .navLink.active {
+    background: transparent;
+    color: #81013a;
   }
 
-  /* Ícone visível no desktop */
+  .navbar.pink .navLink.active {
+    color: #ffffff;
+  }
+
+  /* Logout button no desktop */
+  .logoutButton {
+    padding: 0;
+    background: transparent;
+    font-size: 0;
+    margin-top: 0;
+  }
+
+  .logoutButton:hover {
+    background: transparent;
+    transform: scale(1.1);
+  }
+
   .logoutIcon {
-    display: block;
     width: 26px;
     height: 26px;
     color: #5a5a5a;
-    transition: color 0.3s ease;
+  }
+
+  .navbar.pink .logoutIcon {
+    color: #ffffff;
   }
 
   .logoutButton:hover .logoutIcon {
     color: #81013a;
   }
 
-  /* Texto "Sair" oculto no desktop */
+  .navbar.pink .logoutButton:hover .logoutIcon {
+    color: #ffffff;
+    opacity: 0.8;
+  }
+
   .logoutText {
     display: none;
   }
 }
 
-/* DESKTOP (1024px+) */
+/* ========================================== */
+/* ========== DESKTOP (1024px+) ========== */
+/* ========================================== */
 
 @media (min-width: 1024px) {
-  .logoDesktop svg {
-    height: 60px;
+  .navbar {
+    padding: 2rem 0;
   }
 
-  .navLinks {
-    gap: 2.5rem;
+  .logoBubble .bubbleShape {
+    width: 80px;
+    height: 80px;
   }
 
-  .navLinks a {
-    font-size: 1.05rem;
+  .logoIcon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .navBubble .bubbleShape {
+    padding: 0.875rem 3.5rem;
+    gap: 3.5rem;
+  }
+
+  .navList {
+    gap: 3rem;
+  }
+
+  .navLink {
+    font-size: 1.125rem;
+  }
+
+  .logoutIcon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* ========================================== */
+/* ========== LARGE DESKTOP (1280px+) ========== */
+/* ========================================== */
+
+@media (min-width: 1280px) {
+  .container {
+    padding: 0 3rem;
+  }
+
+  .navBubble .bubbleShape {
+    gap: 4rem;
+  }
+
+  .navList {
+    gap: 3.5rem;
+  }
+
+  .navLink {
+    font-size: 1.25rem;
   }
 }

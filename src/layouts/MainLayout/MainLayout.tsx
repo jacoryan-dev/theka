@@ -5,12 +5,16 @@ import styles from "./MainLayout.module.css";
 
 interface MainLayoutProps {
   children: ReactNode;
+  navbarVariant?: "light" | "dark" | "pink";
 }
 
-export default function MainLayout({ children }: MainLayoutProps) {
+export default function MainLayout({
+  children,
+  navbarVariant = "light",
+}: MainLayoutProps) {
   return (
     <div className={styles.mainLayout}>
-      <Navbar />
+      <Navbar variant={navbarVariant} />
       <main className={styles.mainContent}>{children}</main>
       <Footer />
     </div>

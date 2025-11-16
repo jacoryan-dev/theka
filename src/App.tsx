@@ -30,7 +30,7 @@ const App = () => {
         <Route
           path="/SobreNos"
           element={
-            <MainLayout>
+            <MainLayout navbarVariant="pink">
               <SobreNos />
             </MainLayout>
           }
