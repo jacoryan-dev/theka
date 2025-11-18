@@ -1,0 +1,620 @@
+/* ===== BASE STYLES (MOBILE FIRST) ===== */
+
+.acervo {
+  padding: 20px 16px;
+  background-color: #F2F2F1;
+  min-height: 100vh;
+  font-family: 'DM Sans', 'Inter', sans-serif;
+}
+
+/* ===== SEÇÃO 1: NOVIDADES DA SEMANA ===== */
+
+.featuredSection {
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+  color: #81013A;
+  margin-bottom: 24px;
+}
+
+/* Acordeon Mobile - Layout Vertical */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.mainBook {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 263 / 437;
+  border-radius: 14.41px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mainBookImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.expandBtn {
+  position: absolute;
+  top: 13.69px;
+  right: 13.69px;
+  width: 42.51px;
+  height: 42.51px;
+  border-radius: 50%;
+  background:none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+}
+
+.expandBtn:hover {
+  background-color: rgba(57, 57, 57, 0.7);
+}
+
+.expandBtn svg {
+  width: 32px;
+  height: 32px;
+}
+
+.bookSlices {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 12px;
+  width: 100%;
+}
+
+.bookSlice {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  background: #EAEAEA;
+  border-radius: 14.41px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bookSlice:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sliceImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sliceExpandBtn {
+  position: absolute;
+  top: 50%;
+  right: 18.73px;
+  transform: translateY(-50%);
+  width: 42.51px;
+  height: 42.51px;
+  border-radius: 50%;
+  background:none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sliceExpandBtn:hover {
+  background-color: rgba(242, 242, 241, 0.7);
+}
+
+.sliceExpandBtn svg {
+  width: 32px;
+  height: 32px;
+}
+
+.bookInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.bookInfo h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+  color: #393939;
+  margin: 0;
+}
+
+.bookInfo p {
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  color: #393939;
+  margin: 0;
+}
+
+/* ===== SEÇÃO 2: VEJA NOSSO CATÁLOGO ===== */
+
+.catalogSection {
+  position: relative;
+}
+
+.catalogSection > .sectionTitle {
+  font-size: 28px;
+  line-height: 28px;
+  margin-bottom: 20px;
+}
+
+.searchContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.searchBar {
+  flex: 1;
+  position: relative;
+  height: 48px;
+}
+
+.searchInput {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 12px 48px 12px 20px;
+  background: #81013A;
+  border: 2px solid #81013A;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.searchIconBtn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchIconBtn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.filterBtn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #81013A;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease;
+}
+
+.filterBtn:hover {
+  background-color: #6b0131;
+}
+
+.filterBtn svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Desktop filters - hidden on mobile */
+.desktopFilters {
+  display: none;
+}
+
+/* ===== SEÇÃO 3: GRID DE LIVROS ===== */
+
+.booksGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.bookCard {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  aspect-ratio: 2 / 3;
+  background: #EAEAEA;
+}
+
+.bookCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.bookCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Botão flutuante + (mobile) */
+.floatingBtn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 100px;
+  background: #81013A;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(129, 1, 58, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 100;
+}
+
+.floatingBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(129, 1, 58, 0.5);
+}
+
+.floatingBtn svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ===== SEÇÃO 4: PAGINAÇÃO ===== */
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  padding-bottom: 80px;
+}
+
+.paginationArrow {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  padding: 0;
+}
+
+.paginationArrow:hover {
+  transform: scale(1.1);
+}
+
+.paginationArrow svg {
+  width: 38px;
+  height: 38px;
+}
+
+.pageNumber {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #F2F2F1;
+  border: 2px solid #FF83A5;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  color: #FF83A5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageNumber:hover {
+  background-color: #FFE0EA;
+}
+
+.pageNumber.active {
+  background-color: #81013A;
+  color: #FFFFFF;
+  border-color: #81013A;
+}
+
+/* ===== DESKTOP STYLES (@media min-width: 992px) ===== */
+
+@media (min-width: 992px) {
+  .acervo {
+    padding: 40px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Seção 1: Acordeon Horizontal */
+  .featuredSection {
+    margin-bottom: 60px;
+  }
+
+  .sectionTitle {
+    font-size: 103.325px;
+    line-height: 100px;
+    margin-bottom: 32px;
+  }
+
+  /* Acordeon Desktop - Layout Horizontal */
+  .accordion {
+    flex-direction: row;
+    gap: 13px;
+    height: 436.6px;
+  }
+
+  .mainBook {
+    flex: none;
+    width: 262.97px;
+    height: 436.6px;
+    aspect-ratio: unset;
+  }
+
+  .bookSlices {
+    flex-direction: row;
+    align-items: center;
+    gap: 13px;
+    width: auto;
+    height: 436.6px;
+  }
+
+  .bookSlice {
+    width: 79.97px;
+    height: 436.6px;
+    transition: width 0.5s ease, transform 0.3s ease;
+  }
+
+  .bookSlice:hover {
+    width: 160px;
+    transform: translateX(0);
+  }
+
+  .bookInfo {
+    margin-top: 20px;
+  }
+
+  .bookInfo h3 {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .bookInfo p {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  /* Seção 2: Filtros Desktop */
+  .catalogSection > .sectionTitle {
+    font-size: 64px;
+    line-height: 60px;
+    margin-bottom: 32px;
+  }
+
+  .searchContainer {
+    margin-bottom: 40px;
+    gap: 16px;
+  }
+
+  .searchBar {
+    flex: 1;
+    max-width: 500px;
+  }
+
+  .searchInput {
+    background: #FEFEFE;
+    border: 2px solid #81013A;
+    color: #7E7E7D;
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+
+  .searchInput::placeholder {
+    color: #7E7E7D;
+  }
+
+  .searchIconBtn {
+    display: none;
+  }
+
+  .filterBtn {
+    display: none;
+  }
+
+  .desktopFilters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .filterSelect {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 10px;
+    width: 201px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 2px solid #81013A;
+    border-radius: 100px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 140%;
+    color: #81013A;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='10' viewBox='0 0 18 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.9238 1.92476L9.42383 9.42476C9.31931 9.52964 9.19512 9.61286 9.05837 9.66964C8.92163 9.72642 8.77502 9.75565 8.62695 9.75565C8.47889 9.75565 8.33228 9.72642 8.19553 9.66964C8.05878 9.61286 7.93459 9.52964 7.83008 9.42476L0.330077 1.92476C0.118732 1.71342 -3.14928e-09 1.42677 0 1.12789C3.14928e-09 0.829003 0.118732 0.542358 0.330077 0.331014C0.541421 0.11967 0.828065 0.000937703 1.12695 0.0009377C1.42584 0.000937697 1.71248 0.11967 1.92383 0.331014L8.62789 7.03508L15.332 0.330077C15.5433 0.118733 15.8299 0 16.1288 0C16.4277 0 16.7144 0.118733 16.9257 0.330077C17.137 0.541421 17.2558 0.828066 17.2558 1.12695C17.2558 1.42584 17.137 1.71248 16.9257 1.92383L16.9238 1.92476Z' fill='%2381013A'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
+  .filterSelect:hover,
+  .filterSelect:focus {
+    border-color: #6b0131;
+  }
+
+  .searchBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 10px;
+    width: 130px;
+    height: 44px;
+    background: #81013A;
+    border-radius: 100px;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .searchBtn:hover {
+    background-color: #6b0131;
+  }
+
+  .searchBtn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Seção 3: Grid 5 colunas */
+  .booksGrid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  /* Esconder botão flutuante no desktop */
+  .floatingBtn {
+    display: none;
+  }
+
+  /* Paginação */
+  .pagination {
+    gap: 16px;
+    padding-bottom: 40px;
+  }
+
+  .paginationArrow,
+  .pageNumber {
+    width: 48px;
+    height: 48px;
+  }
+
+  .pageNumber {
+    font-size: 18px;
+  }
+}
+
+/* ===== ACESSIBILIDADE ===== */
+
+.expandBtn:focus,
+.sliceExpandBtn:focus,
+.filterBtn:focus,
+.searchIconBtn:focus,
+.searchBtn:focus,
+.floatingBtn:focus,
+.paginationArrow:focus,
+.pageNumber:focus {
+  outline: 3px solid #81013A;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

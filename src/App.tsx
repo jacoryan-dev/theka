@@ -8,6 +8,7 @@ import Contato from "./pages/Contato/Contato.tsx";
 import MainLayout from "./layouts/MainLayout/MainLayout.tsx";
 import SobreNos from "./pages/SobreNos/SobreNos.tsx";
 import Inicio from "./pages/Inicio/Inicio.tsx";
+import Acervo from "./pages/Acervo/Acervo.tsx";
 
 const App = () => {
   return (
@@ -25,6 +26,14 @@ const App = () => {
           element={
             <MainLayout>
               <Inicio />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/Acervo"
+          element={
+            <MainLayout>
+              <Acervo />
             </MainLayout>
           }
         />

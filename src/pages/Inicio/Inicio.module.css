@@ -2,515 +2,454 @@
    MOBILE-FIRST STYLES (BASE)
    =================================== */
 
-.inicioContainer {
-  width: 100%;
-  min-height: 100vh;
-}
-
-/* SEÇÃO 1: HERO */
-.heroSection {
-  background-color: #A1D54A;
-  border-radius: 16.86px;
-  padding: 24px;
-  margin: 16px;
-  position: relative;
-  overflow: hidden; /* Ocultar overflow no mobile */
-}
-
-.heroContent {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-  z-index: 2;
-}
-
-.logoContainer {
-  margin-bottom: 16px;
-}
-
-.logoContainer svg {
-  width: 120px;
-  height: auto;
-}
-
-.heroSlogan {
-  font-size: 16px;
-  font-weight: 500;
-  color: #FFFFFF;
-  margin-bottom: 20px;
-  line-height: 1.4;
-  max-width: 200px;
-}
-
-.heroButton {
-  background-color: #EF4444;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 24px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.heroButton:hover {
-  background-color: #DC2626;
-  transform: translateY(-2px);
-}
-
-.heroArtwork {
-  display: none; /* Oculto no mobile */
-}
-
-.heroArtwork svg {
-  width: 100%;
-  height: auto;
-}
-
-/* SEÇÃO 2: INTRODUÇÃO */
-.introSection {
-  padding: 40px 16px;
-}
-
-.introContent {
-  margin-bottom: 40px;
-}
-
-.introHeader {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.introIcon {
-  width: 48px;
-  height: auto;
-  flex-shrink: 0;
-}
-
-.introTitle {
-  font-size: 24px;
-  font-weight: 700;
-  color: #81013A;
-  line-height: 1.3;
-  margin: 0;
-}
-
-.introText {
-  font-size: 14px;
-  line-height: 1.6;
-  color: #333333;
-  margin-bottom: 24px;
-}
-
-.introLinks {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.linkWithIcon {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #81013A;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  border: 2px solid #81013A;
-  border-radius: 24px;
-  padding: 10px 16px;
-  transition: all 0.3s ease;
-  width: fit-content;
-}
-
-.linkWithIcon svg {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-}
-
-.linkWithIcon:hover {
-  background-color: #81013A;
-  color: #FFFFFF;
-}
-
-.linkWithIcon:hover svg path {
-  fill: #FFFFFF;
-}
-
-/* Carrossel de Livros - Mobile (1 por vez, centralizado) */
-.bookCarousel {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.carouselBookWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
-}
-
-.bookCard {
-  width: 280px;
-  height: 420px;
-  border-radius: 20px;
-  padding: 29px 24px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-}
-
-.bookCard:hover {
-  transform: translateY(-5px);
-}
-
-.bookCard img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-/* Customização do Carousel do Bootstrap */
-.bookCarousel :global(.carousel-control-prev),
-.bookCarousel :global(.carousel-control-next) {
-  width: 40px;
-  height: 40px;
-  background-color: rgba(129, 1, 58, 0.8);
-  border-radius: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 1;
-}
-
-.bookCarousel :global(.carousel-control-prev) {
-  left: 0;
-}
-
-.bookCarousel :global(.carousel-control-next) {
-  right: 0;
-}
-
-.bookCarousel :global(.carousel-control-prev-icon),
-.bookCarousel :global(.carousel-control-next-icon) {
-  width: 20px;
-  height: 20px;
-}
-
-/* SEÇÃO 3: ESTATÍSTICAS */
-.statsSection {
-  padding: 40px 16px;
-  background-color: #F9FAFB;
-}
-
-.statsHeader {
-  margin-bottom: 32px;
-}
-
-.statsTitle {
-  font-size: 28px;
-  font-weight: 700;
-  color: #81013A;
-  line-height: 1.3;
-  margin: 0;
-}
-
-/* Layout Mobile: 2 colunas para porcentagem, 1 coluna para numéricos */
-.statsGrid {
-  display: grid;
-  gap: 16px;
-}
-
-.statCard {
-  border-radius: 16px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
-
-.statIcon {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 24px;
-  height: 24px;
-}
-
-.statValue {
-  font-size: 48px;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin: 0 0 8px 0;
-  line-height: 1;
-}
-
-.statLabel {
-  font-size: 14px;
-  font-weight: 500;
-  color: #FFFFFF;
-  margin: 0;
-  line-height: 1.4;
-}
-
-/* Grid específico para mobile */
-.percentageCard {
-  grid-column: span 1;
-}
-
-.numericCard {
-  grid-column: span 2;
-}
-
-/* ===================================
-   TABLET STYLES
-   =================================== */
-@media (min-width: 768px) {
+   .inicioContainer {
+    width: 100%;
+    min-height: 100vh;
+  }
+  
+  /* SEÇÃO 1: HERO */
   .heroSection {
-    margin: 24px;
-    padding: 40px;
-  }
-
-  .heroSlogan {
-    font-size: 20px;
-    max-width: 280px;
-  }
-
-  .logoContainer svg {
-    width: 160px;
-  }
-
-  .introTitle {
-    font-size: 32px;
-  }
-
-  .introText {
-    font-size: 16px;
-  }
-
-  .statsTitle {
-    font-size: 32px;
-  }
-}
-
-/* ===================================
-   DESKTOP STYLES (>= 992px)
-   =================================== */
-@media (min-width: 992px) {
-  .inicioContainer {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  /* HERO - Layout 2 colunas */
-  .heroSection {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 40px;
-    padding: 60px;
-    margin: 40px 0;
-    min-height: 500px;
-    overflow: visible; /* Permitir que o artwork saia da box */
+    background-color: #A1D54A;
+    border-radius: 16.86px;
+    padding: 24px;
+    margin: 16px;
     position: relative;
+    overflow: hidden; /* Garante o recorte da arte no mobile */
+    min-height: 400px;
   }
-
+  
   .heroContent {
-    justify-content: center;
-  }
-
-  .logoContainer svg {
-    width: 200px;
-  }
-
-  .heroSlogan {
-    font-size: 24px;
-    max-width: 100%;
-  }
-
-  .heroButton {
-    font-size: 16px;
-    padding: 12px 32px;
-  }
-
-  .heroArtwork {
-    display: flex; /* Mostrar no desktop */
-    justify-content: flex-end;
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
     position: relative;
-    overflow: visible;
-    width: 291.8196105957031px;
-    height: 365.5535583496094px;
-    top: 217.34px;
-    left: 50px;
-    opacity: 1;
-  }
-
-  .legArtWork {
-   width: 522.4553222656255;
-   height: 762.4664916992194;
-   top: -24px;
-   left: 100px;
-   opacity: 1;
-
-  }
-
-  .heroArtwork svg {
-    width: 120%;
-    max-width: 700px;
-    height: auto;
-    position: absolute;
-    top: -60px;
-    right: -100px;
-  }
-
-  /* INTRODUÇÃO - Layout 2 colunas */
-  .introSection {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    padding: 80px 0;
-    align-items: center;
-  }
-
-  .introContent {
-    margin-bottom: 0;
-  }
-
-  .introTitle {
-    font-size: 36px;
-  }
-
-  .introText {
-    font-size: 16px;
-    margin-bottom: 32px;
-  }
-
-  .introLinks {
-    gap: 16px;
-  }
-
-  .linkWithIcon {
-    font-size: 15px;
-    padding: 12px 20px;
-  }
-
-  /* Carrossel Desktop - Múltiplos livros sobrepostos */
-  .bookCarousel {
-    max-width: 100%;
-    position: relative;
-    height: 500px;
-  }
-
-  .carouselBookWrapper {
-    height: 100%;
-    position: relative;
-    padding: 0;
-  }
-
-  /* Efeito de empilhamento e rotação para desktop */
-  .bookCarousel :global(.carousel-item) {
-    position: relative;
-  }
-
-  .bookCard {
-    width: 340px;
-    height: 510px;
-    position: absolute;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Posicionamento dos cards no desktop */
-  .bookCarousel :global(.carousel-item:nth-child(1)) .bookCard {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) rotate(3.41deg);
-    z-index: 3;
-  }
-
-  .bookCarousel :global(.carousel-item:nth-child(2)) .bookCard {
-    left: 50%;
-    top: 50%;
-    transform: translate(-60%, -55%) rotate(-7.42deg);
     z-index: 2;
-    opacity: 0.85;
   }
-
-  .bookCarousel :global(.carousel-item:nth-child(3)) .bookCard {
-    left: 50%;
-    top: 50%;
-    transform: translate(-40%, -45%) rotate(0deg);
+  
+  .logoContainer {
+    margin-bottom: 16px;
+    
+  }
+  
+  .logoContainer svg {
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+    margin-bottom: px;
+    height: auto;
+  }
+  
+  .heroSlogan {
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    max-width: 200px;
+  }
+  
+  .heroButton {
+    background-color: #F78520; /* Cor corrigida conforme botão Figma */
+    color: #FFFFFF;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .heroButton:hover {
+    background-color: #e67510;
+    transform: translateY(-2px);
+  }
+  
+  
+  .heroArtwork {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
     z-index: 1;
-    opacity: 0.7;
+  }
+  
+  .blobSvg {
+    position: absolute;
+    width: 280px;
+    height: 200px;
+    right: 0;
+    top: 190px;
   }
 
+  .sneakerSvg {
+    position: absolute;
+    height: auto;
+    width: 130px;
+    right: 210px;
+    bottom: 0;
+
+  }
+  
+  /* SEÇÃO 2: INTRODUÇÃO */
+  .introSection {
+    padding: 40px 16px;
+  }
+  
+  .introContent {
+    margin-bottom: 40px;
+  }
+  
+  .introHeader {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .introIcon {
+    width: 48px;
+    height: auto;
+    flex-shrink: 0;
+  }
+  
+  .introTitle {
+    font-size: 24px;
+    font-weight: 700;
+    color: #81013A;
+    line-height: 1.3;
+    margin: 0;
+  }
+  
+  .introText {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333333;
+    margin-bottom: 24px;
+  }
+  
+  .introLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .linkWithIcon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #81013A;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border: 2px solid #81013A;
+    border-radius: 24px;
+    padding: 10px 16px;
+    transition: all 0.3s ease;
+    width: fit-content;
+  }
+  
+  .linkWithIcon svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+  
+  .linkWithIcon:hover {
+    background-color: #81013A;
+    color: #FFFFFF;
+  }
+  
+  .linkWithIcon:hover svg path {
+    fill: #FFFFFF;
+  }
+  
+  /* Carrossel de Livros - Mobile (1 por vez, centralizado) */
+  .bookCarousel {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .carouselBookWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  
+  .bookCard {
+    width: 280px;
+    height: 420px;
+    border-radius: 20px;
+    padding: 29px 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .bookBlue { background-color: #87CEEB; } /* Fallback se img falhar */
+  .bookYellow { background-color: #FFE66D; }
+  .bookGreen { background-color: #4ECDC4; }
+  
+  .bookCard img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  
+  /* Customização do Carousel do Bootstrap */
   .bookCarousel :global(.carousel-control-prev),
   .bookCarousel :global(.carousel-control-next) {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(129, 1, 58, 0.8);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+  
+  .bookCarousel :global(.carousel-control-prev) { left: 0; }
+  .bookCarousel :global(.carousel-control-next) { right: 0; }
+  
+  /* SEÇÃO 3: ESTATÍSTICAS */
+  .statsSection {
+    padding: 40px 16px;
+    background-color: #FFFFFF;
+  }
+  
+  .statsHeader {
+    margin-bottom: 32px;
+  }
+  
+  .statsTitle {
+    font-size: 28px;
+    font-weight: 700;
+    color: #81013A;
+    line-height: 1.3;
+    margin: 0;
+  }
+  
+  /* Layout Mobile: 2 colunas para porcentagem, 1 coluna para numéricos */
+  .statsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  .statCard {
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    min-height: 140px;
+  }
+  
+  .statIcon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
     width: 50px;
     height: 50px;
   }
-
-  /* ESTATÍSTICAS - Layout horizontal (5 colunas) */
-  .statsSection {
-    padding: 80px 0;
+  
+  .statValue {
+    font-size: 40px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: auto 0 8px 0; /* Centraliza verticalmente */
+    line-height: 1;
   }
-
-  .statsGrid {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
+  
+  .statLabel {
+    font-size: 12px;
+    font-weight: 500;
+    color: #FFFFFF;
+    margin: 0;
+    line-height: 1.4;
   }
-
-  .percentageCard,
-  .numericCard {
+  
+  /* Grid específico para mobile */
+  .percentageCard {
     grid-column: span 1;
   }
-
-  .statCard {
-    padding: 32px 24px;
-    min-height: 180px;
+  
+  .numericCard {
+    grid-column: span 2; /* Ocupa largura total no mobile */
   }
-
-  .statIcon {
-    width: 32px;
-    height: 32px;
-    top: 20px;
-    right: 20px;
+  
+  /* ===================================
+     DESKTOP STYLES (>= 992px)
+     =================================== */
+  @media (min-width: 992px) {
+    .inicioContainer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+    }
+  
+    /* HERO - Layout com posicionamento absoluto fiel ao Figma */
+    .heroSection {
+      /* width: 1200px; height: 511px; top: 198px; */
+      max-width: 1200px;
+      height: 511px;
+      margin: 40px 0;
+      padding: 60px;
+      display: block; /* Remove grid, usa absoluto interno */
+      overflow: visible;
+    }
+  
+    .heroContent {
+      width: 40%;
+      margin-top: 60px;
+      margin-left: 40px;
+    }
+  
+    .logoContainer svg {
+      width: 226px; /* Tamanho original SVG */
+    }
+  
+    .heroSlogan {
+      font-size: 24px;
+      max-width: 300px;
+    }
+  
+    /* Artwork Desktop */
+    .heroArtwork {
+      overflow: visible;
+    }
+    
+    /* Blob Laranja Desktop */
+    .blobSvg {
+      width: 567px;
+      height: 499px;
+      right: 0; /* Ajustado para alinhar com borda direita */
+      top: 0; /* Ajuste fino visual */
+    }
+  
+    /* Tênis Desktop */
+    .sneakerSvg {
+      width: 313px;
+      height: 307px;
+      right: 500px; /* Posição relativa ao blob */
+      bottom: 0;
+    }
+  
+    /* INTRODUÇÃO */
+    .introSection {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      padding: 80px 0;
+      align-items: center;
+    }
+  
+    .introTitle {
+      font-size: 36px;
+    }
+  
+    /* CARROSSEL DESKTOP - EFEITO LEQUE */
+    .bookCarousel {
+      max-width: 100%;
+      position: relative;
+      height: 650px; /* Altura para acomodar os livros rotacionados */
+    }
+  
+    .carouselBookWrapper {
+      height: 100%;
+      position: relative;
+      padding: 0;
+    }
+  
+    /* Permitir sobreposição */
+    .bookCarousel :global(.carousel-inner) {
+      overflow: visible;
+    }
+    
+    .bookCarousel :global(.carousel-item) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block !important; /* Força todos visíveis para empilhar */
+      opacity: 1 !important;
+      visibility: visible !important;
+      transition: none; /* Remove transição de slide padrão */
+    }
+  
+    .bookCard {
+      width: 422px;
+      height: 631px;
+      position: absolute;
+      box-shadow: none; /* Sombra controlada ou removida conforme design clean */
+    }
+  
+    /* Posicionamento Específico Desktop (Copiado dos dados fornecidos) */
+    
+    /* Livro 1 Azul - Base (Fundo) */
+    .bookCarousel :global(.carousel-item:nth-child(3)) .bookBlue {
+      top: 55px;
+      left: 147px;
+      transform: rotate(0deg);
+      z-index: 1;
+    }
+  
+    /* Livro 2 Amarelo - Meio */
+    .bookCarousel :global(.carousel-item:nth-child(2)) .bookYellow {
+      top: 30.61px;
+      left: 108.19px;
+      transform: rotate(-7.42deg);
+      z-index: 2;
+    }
+  
+    /* Livro 3 Verde - Topo (Frente) */
+    .bookCarousel :global(.carousel-item:nth-child(1)) .bookGreen {
+      top: 71px;
+      left: 128px;
+      transform: rotate(3.41deg);
+      z-index: 3;
+    }
+  
+    /* Esconde controles no desktop pois é estático/leque */
+    .bookCarousel :global(.carousel-control-prev),
+    .bookCarousel :global(.carousel-control-next) {
+      display: none;
+    }
+  
+    /* ESTATÍSTICAS - Layout 5 colunas */
+    .statsSection {
+      padding: 80px 0;
+    }
+  
+    .statsGrid {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+  
+    /* Reseta spans do mobile */
+    .percentageCard,
+    .numericCard {
+      grid-column: span 1;
+    }
+  
+    .statCard {
+      padding: 32px 24px;
+      min-height: 200px;
+    }
+  
+    .statValue {
+      font-size: 56px;
+    }
   }
-
-  .statValue {
-    font-size: 56px;
-    margin-bottom: 12px;
-  }
-
-  .statLabel {
-    font-size: 13px;
-  }
-}
-
-/* ===================================
-   LARGE DESKTOP STYLES (>= 1200px)
-   =================================== */
-@media (min-width: 1200px) {
-  .heroSection {
-    padding: 80px;
-  }
-
-  .introSection {
-    gap: 80px;
-  }
-
-  .statsGrid {
-    gap: 24px;
-  }
-}

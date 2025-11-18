@@ -76,6 +76,14 @@
   color: #ffffff;
 }
 
+.navbar.pink .logoContainer {
+  color: #ffffff;
+}
+
+.navbar.light .logoContainer {
+  color: rgba(57, 57, 57, 1);
+}
+
 /* ========== HAMBURGER MENU (MOBILE) ========== */
 
 .hamburger {
@@ -144,6 +152,33 @@
   gap: 2rem;
   height: 100%;
 }
+.logoContainer {
+  margin-bottom: 16px;
+}
+
+.logoContainer svg {
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+  margin-bottom: 0;
+  height: auto;
+}
+
+/* Bubble specifically for the larger mobile TheKa wordmark */
+
+.logoContainer .bubbleShape {
+  width: auto;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
 
 /* ========== MOBILE LOGO HEADER ========== */
 
@@ -164,6 +199,8 @@
 .navbar.pink .thekaText {
   color: #81013a;
 }
+
+
 
 /* ========== NAV LIST (MOBILE) ========== */
 
