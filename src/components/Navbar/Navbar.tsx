@@ -15,24 +15,21 @@ export default function Navbar({ variant = "light" }: NavbarProps) {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Fecha o menu ao navegar e gerencia scroll do body
+    // Fecha o menu ao navegar e bloqueia o scroll do body quando aberto
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
-    setIsMenuOpen(false);
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setIsMenuOpen(false);
     };
-
     if (isMenuOpen) {
       document.addEventListener("keydown", onKeyDown);
     }
-
     return () => {
       document.body.style.overflow = "";
       document.removeEventListener("keydown", onKeyDown);
     };
-  }, [location.pathname, isMenuOpen]);
+  }, [isMenuOpen]);
 
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -94,6 +91,7 @@ export default function Navbar({ variant = "light" }: NavbarProps) {
             <span className={isMenuOpen ? styles.open : ""}></span>
           </button>
 
+
           {/* Navigation Bubble */}
           <div
             className={`${styles.navBubble} ${
@@ -135,9 +133,9 @@ export default function Navbar({ variant = "light" }: NavbarProps) {
                 </li>
                 <li>
                   <Link
-                    to="/sobre-nos"
+                    to="/SobreNos"
                     className={`${styles.navLink} ${
-                      isActive("/sobre-nos") ? styles.active : ""
+                      isActive("/SobreNos") ? styles.active : ""
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >

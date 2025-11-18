@@ -171,12 +171,14 @@
 
 .valuesGrid {
   gap: 1.5rem;
-  padding: 0 1rem;
-  /* manter todos os cards em uma única linha */
-  flex-wrap: nowrap !important;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  padding: 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.valuesGrid > * {
+  width: 100%;
+  flex: 0 0 auto;
 }
 
 .valuesGrid::-webkit-scrollbar {
@@ -193,6 +195,10 @@
   justify-content: space-between;
   overflow: hidden;
   margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .valueCardYellow {
@@ -254,12 +260,14 @@
 
 .teamGrid {
   gap: 1.5rem;
-  padding: 0 1rem;
-  /* manter todos os cards em uma única linha */
-  flex-wrap: nowrap !important;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  padding: 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.teamGrid > * {
+  width: 100%;
+  flex: 0 0 auto;
 }
 
 .teamGrid::-webkit-scrollbar {
@@ -275,6 +283,10 @@
   flex-direction: column;
   justify-content: flex-end;
   margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .teamMemberOrange {
@@ -408,7 +420,7 @@
 
   .historyCard {
     margin: 0;
-    padding: 3rem;
+    padding: 0.6rem;
   }
 
   .historyContent {
@@ -424,11 +436,12 @@
 
   .historyArtwork {
     flex: 0 0 45%;
-    max-width: 358px;
+    max-width: 500px;
   }
 
   .historyArtwork svg {
     max-width: 100%;
+    margin-right: -30%;
   }
 
   /* Valores Desktop */
@@ -444,11 +457,17 @@
   .valuesGrid {
     gap: 2rem;
     padding: 0;
-    overflow-x: visible;
+    flex-direction: row;
+  }
+
+  .valuesGrid > * {
+    width: auto;
+    flex: 1;
   }
 
   .valueCard {
-    margin-bottom: 0;
+    margin: 0;
+    max-width: none;
   }
 
   .valueTitle,
@@ -464,11 +483,17 @@
   .teamGrid {
     gap: 2rem;
     padding: 0;
-    overflow-x: visible;
+    flex-direction: row;
+  }
+
+  .teamGrid > * {
+    width: auto;
+    flex: 1;
   }
 
   .teamMember {
-    margin-bottom: 0;
+    margin: 0;
+    max-width: none;
   }
 
   .teamNameBadge span {
