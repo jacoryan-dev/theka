@@ -2,26 +2,35 @@
 
 .acervo {
   padding: 20px 16px;
-  background-color: #F2F2F1;
+  background-color: #f2f2f1;
   min-height: 100vh;
-  font-family: 'DM Sans', 'Inter', sans-serif;
+  font-family: "DM Sans", "Inter", sans-serif;
 }
 
 /* ===== SEÇÃO 1: NOVIDADES DA SEMANA ===== */
 
 .featuredSection {
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.featuredHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .sectionTitle {
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
   line-height: 32px;
   letter-spacing: -0.02em;
-  color: #81013A;
-  margin-bottom: 24px;
+  color: #81013a;
+  margin: 0;
 }
 
 /* Acordeon Mobile - Layout Vertical */
@@ -31,7 +40,6 @@
   align-items: flex-start;
   padding: 0;
   gap: 12px;
-  margin-bottom: 16px;
 }
 
 .mainBook {
@@ -58,7 +66,7 @@
   width: 42.51px;
   height: 42.51px;
   border-radius: 50%;
-  background:none;
+  background: none;
   border: none;
   display: flex;
   align-items: center;
@@ -90,7 +98,7 @@
   position: relative;
   width: 100%;
   height: 80px;
-  background: #EAEAEA;
+  background: #eaeaea;
   border-radius: 14.41px;
   overflow: hidden;
   cursor: pointer;
@@ -118,7 +126,7 @@
   width: 42.51px;
   height: 42.51px;
   border-radius: 50%;
-  background:none;
+  background: none;
   border: none;
   display: flex;
   align-items: center;
@@ -142,11 +150,11 @@
   align-items: flex-start;
   padding: 0;
   gap: 7px;
-  margin-top: 12px;
+  margin: 0;
 }
 
 .bookInfo h3 {
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -157,7 +165,7 @@
 }
 
 .bookInfo p {
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -199,15 +207,15 @@
   width: 100%;
   height: 100%;
   padding: 12px 48px 12px 20px;
-  background: #81013A;
-  border: 2px solid #81013A;
+  background: #81013a;
+  border: 2px solid #81013a;
   border-radius: 100px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
   line-height: 17px;
-  color: #FFFFFF;
+  color: #ffffff;
   outline: none;
 }
 
@@ -240,7 +248,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #81013A;
+  background: #81013a;
   border: none;
   display: flex;
   align-items: center;
@@ -281,7 +289,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   aspect-ratio: 2 / 3;
-  background: #EAEAEA;
+  background: #eaeaea;
 }
 
 .bookCard:hover {
@@ -304,7 +312,7 @@
   width: 56px;
   height: 56px;
   border-radius: 100px;
-  background: #81013A;
+  background: #81013a;
   border: none;
   display: flex;
   flex-direction: row;
@@ -366,14 +374,14 @@
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background-color: #F2F2F1;
-  border: 2px solid #FF83A5;
-  font-family: 'DM Sans', sans-serif;
+  background-color: #f2f2f1;
+  border: 2px solid #ff83a5;
+  font-family: "DM Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 16px;
-  color: #FF83A5;
+  color: #ff83a5;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -382,13 +390,13 @@
 }
 
 .pageNumber:hover {
-  background-color: #FFE0EA;
+  background-color: #ffe0ea;
 }
 
 .pageNumber.active {
-  background-color: #81013A;
-  color: #FFFFFF;
-  border-color: #81013A;
+  background-color: #81013a;
+  color: #ffffff;
+  border-color: #81013a;
 }
 
 /* ===== DESKTOP STYLES (@media min-width: 992px) ===== */
@@ -403,19 +411,29 @@
   /* Seção 1: Acordeon Horizontal */
   .featuredSection {
     margin-bottom: 60px;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .featuredHeader {
+    flex: 0 0 auto;
+    width: 300px;
+    gap: 20px;
   }
 
   .sectionTitle {
     font-size: 103.325px;
     line-height: 100px;
-    margin-bottom: 32px;
   }
 
   /* Acordeon Desktop - Layout Horizontal */
   .accordion {
     flex-direction: row;
+    justify-content: flex-end;
     gap: 13px;
     height: 436.6px;
+    flex: 1;
   }
 
   .mainBook {
@@ -445,7 +463,7 @@
   }
 
   .bookInfo {
-    margin-top: 20px;
+    margin: 0;
   }
 
   .bookInfo h3 {
@@ -476,15 +494,15 @@
   }
 
   .searchInput {
-    background: #FEFEFE;
-    border: 2px solid #81013A;
-    color: #7E7E7D;
+    background: #fefefe;
+    border: 2px solid #81013a;
+    color: #7e7e7d;
     font-size: 16px;
     padding: 12px 20px;
   }
 
   .searchInput::placeholder {
-    color: #7E7E7D;
+    color: #7e7e7d;
   }
 
   .searchIconBtn {
@@ -512,15 +530,15 @@
     gap: 10px;
     width: 201px;
     height: 44px;
-    background: #FFFFFF;
-    border: 2px solid #81013A;
+    background: #ffffff;
+    border: 2px solid #81013a;
     border-radius: 100px;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-style: normal;
     font-weight: 300;
     font-size: 14px;
     line-height: 140%;
-    color: #81013A;
+    color: #81013a;
     cursor: pointer;
     outline: none;
     appearance: none;
@@ -544,15 +562,15 @@
     gap: 10px;
     width: 130px;
     height: 44px;
-    background: #81013A;
+    background: #81013a;
     border-radius: 100px;
     border: none;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-style: normal;
     font-weight: 800;
     font-size: 16px;
     line-height: 19px;
-    color: #FFFFFF;
+    color: #ffffff;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
@@ -605,7 +623,7 @@
 .floatingBtn:focus,
 .paginationArrow:focus,
 .pageNumber:focus {
-  outline: 3px solid #81013A;
+  outline: 3px solid #81013a;
   outline-offset: 2px;
 }
 
