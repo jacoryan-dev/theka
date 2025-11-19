@@ -1,0 +1,394 @@
+/* ===== BASE STYLES (MOBILE FIRST) ===== */
+
+.overlay {
+  display: none;
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f2f2f1;
+  overflow-y: auto;
+  z-index: 1000;
+  padding: 20px 16px;
+}
+
+.content {
+  width: 100%;
+  max-width: 100%;
+}
+
+.title {
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 28px;
+  letter-spacing: -0.02em;
+  color: #81013a;
+  margin: 0 0 32px 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.formLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ===== SEÇÃO DE IMAGEM ===== */
+
+.imageSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.imageUploadBox {
+  position: relative;
+  width: 237px;
+  height: 346px;
+  background: #a3a3a2;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.imagePlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.imagePlaceholder svg {
+  width: 63px;
+  height: 63px;
+}
+
+.previewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.uploadButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 10px;
+  width: 193px;
+  height: 44px;
+  background: #7e7e7d;
+  border-radius: 100px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.uploadButton:hover {
+  background-color: #6a6a69;
+}
+
+.uploadButton svg {
+  width: 18px;
+  height: 21px;
+}
+
+.fileInput {
+  display: none;
+}
+
+/* ===== SEÇÃO DE CAMPOS ===== */
+
+.fieldsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.formGroupSmall {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.label {
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: #81013a;
+}
+
+.input,
+.select {
+  box-sizing: border-box;
+  padding: 12px 20px;
+  width: 100%;
+  height: 44px;
+  background: #ffffff;
+  border: 2px solid #81013a;
+  border-radius: 100px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 17px;
+  color: #393939;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input::placeholder {
+  color: #7e7e7d;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: #6b0131;
+}
+
+.select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='10' viewBox='0 0 18 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.9238 1.92476L9.42383 9.42476C9.31931 9.52964 9.19512 9.61286 9.05837 9.66964C8.92163 9.72642 8.77502 9.75565 8.62695 9.75565C8.47889 9.75565 8.33228 9.72642 8.19553 9.66964C8.05878 9.61286 7.93459 9.52964 7.83008 9.42476L0.330077 1.92476C0.118732 1.71342 -3.14928e-09 1.42677 0 1.12789C3.14928e-09 0.829003 0.118732 0.542358 0.330077 0.331014C0.541421 0.11967 0.828065 0.000937703 1.12695 0.0009377C1.42584 0.000937697 1.71248 0.11967 1.92383 0.331014L8.62789 7.03508L15.332 0.330077C15.5433 0.118733 15.8299 0 16.1288 0C16.4277 0 16.7144 0.118733 16.9257 0.330077C17.137 0.541421 17.2558 0.828066 17.2558 1.12695C17.2558 1.42584 17.137 1.71248 16.9257 1.92383L16.9238 1.92476Z' fill='%2381013A'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.textarea {
+  box-sizing: border-box;
+  padding: 12px 20px;
+  width: 100%;
+  min-height: 120px;
+  background: #ffffff;
+  border: 2px solid #81013a;
+  border-radius: 20px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 140%;
+  color: #393939;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.textarea::placeholder {
+  color: #7e7e7d;
+}
+
+/* ===== BOTÕES DE AÇÃO ===== */
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+  padding-bottom: 24px;
+}
+
+.cancelButton,
+.saveButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 10px;
+  height: 44px;
+  border-radius: 100px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 19px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.cancelButton {
+  background: transparent;
+  color: #81013a;
+  border: 2px solid #81013a;
+}
+
+.cancelButton:hover {
+  background-color: rgba(129, 1, 58, 0.05);
+}
+
+.saveButton {
+  background: #81013a;
+  color: #ffffff;
+}
+
+.saveButton:hover {
+  background-color: #6b0131;
+}
+
+.saveButton svg {
+  width: 15px;
+  height: 20px;
+}
+
+/* ===== DESKTOP STYLES (@media min-width: 992px) ===== */
+
+@media (min-width: 992px) {
+  .overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(57, 57, 57, 0.8);
+    z-index: 999;
+  }
+
+  .container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 1300px;
+    height: 1300px;
+    max-height: 90vh;
+    background: #ffffff;
+    border-radius: 32px;
+    padding: 48px 64px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+  }
+
+  .content {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 48px;
+    line-height: 48px;
+    margin-bottom: 48px;
+  }
+
+  .formLayout {
+    flex-direction: row;
+    gap: 48px;
+  }
+
+  .imageSection {
+    flex-shrink: 0;
+    align-items: flex-start;
+  }
+
+  .fieldsSection {
+    flex: 1;
+    gap: 24px;
+  }
+
+  .formRow {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .formGroup {
+    flex: 1;
+  }
+
+  .formGroupSmall {
+    flex: 0 0 auto;
+    width: 180px;
+  }
+
+  .label {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .input,
+  .select {
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .textarea {
+    font-size: 16px;
+    min-height: 140px;
+  }
+
+  .actions {
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 32px;
+    padding-bottom: 0;
+  }
+
+  .cancelButton,
+  .saveButton {
+    width: auto;
+    min-width: 150px;
+  }
+}
+
+/* ===== ACESSIBILIDADE ===== */
+
+.uploadButton:focus,
+.input:focus,
+.select:focus,
+.textarea:focus,
+.cancelButton:focus,
+.saveButton:focus {
+  outline: 3px solid #81013a;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

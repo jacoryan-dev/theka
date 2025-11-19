@@ -591,11 +591,6 @@
     margin-bottom: 40px;
   }
 
-  /* Esconder botão flutuante no desktop */
-  .floatingBtn {
-    display: none;
-  }
-
   /* Paginação */
   .pagination {
     gap: 16px;

@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 import styles from "./Acervo.module.css";
+import AddMaterial, {
+  type MaterialData as AddMaterialData,
+} from "../../pages/AddMaterial/AddMaterial";
+import EditMaterial, {
+  type MaterialData as EditMaterialData,
+} from "../../pages/EditMaterial/EditMaterial";
+import ViewMaterial from "../../pages/ViewMaterial/ViewMaterial";
 
 // Imagens do acervo
 import livro1 from "../../assets/livro1.png";
@@ -31,6 +38,12 @@ const Acervo: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [genre, setGenre] = useState("");
   const [publisher, setPublisher] = useState("");
+
+  // Estados para os modais
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
 
   // Mock de livros para o acordeon "Novidades da semana"
   const featuredBooks: Book[] = [
@@ -69,7 +82,6 @@ const Acervo: React.FC = () => {
   ];
 
   // Mock de livros para o catálogo
-  // Usar um conjunto de imagens da pasta assets (vai ciclar se houver menos imagens que livros)
   const images = [
     livro1,
     livro2,
@@ -115,6 +127,55 @@ const Acervo: React.FC = () => {
     color: "#EAEAEA",
   }));
 
+  // Handlers para os modais
+  const handleOpenAddModal = () => {
+    setIsAddModalOpen(true);
+  };
+
+  const handleCloseAddModal = () => {
+    setIsAddModalOpen(false);
+  };
+
+  const handleSaveNewMaterial = (material: AddMaterialData) => {
+    console.log("Novo material salvo:", material);
+    // Aqui você integraria com sua API para salvar o material
+  };
+
+  const handleOpenViewModal = (book: Book) => {
+    setSelectedBook(book);
+    setIsViewModalOpen(true);
+  };
+
+  const handleCloseViewModal = () => {
+    setIsViewModalOpen(false);
+    setSelectedBook(null);
+  };
+
+  const handleOpenEditModal = (book: Book) => {
+    setSelectedBook(book);
+    setIsEditModalOpen(true);
+  };
+
+  const handleCloseEditModal = () => {
+    setIsEditModalOpen(false);
+    setSelectedBook(null);
+  };
+
+  const handleEditFromView = () => {
+    setIsViewModalOpen(false);
+    setIsEditModalOpen(true);
+  };
+
+  const handleSaveEditMaterial = (material: EditMaterialData) => {
+    console.log("Material editado:", material);
+    // Aqui você integraria com sua API para atualizar o material
+  };
+
+  const handleDeleteMaterial = () => {
+    console.log("Material deletado:", selectedBook?.id);
+    // Aqui você integraria com sua API para deletar o material
+  };
+
   return (
     <div className={styles.acervo}>
       {/* Seção 1: Novidades da semana - Acordeon */}
@@ -147,14 +208,21 @@ const Acervo: React.FC = () => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M21.2534 3.32088C17.7066 3.32088 14.2396 4.37261 11.2906 6.34307C8.34158 8.31352 6.04312 11.1142 4.68584 14.391C3.32857 17.6677 2.97345 21.2733 3.66538 24.7519C4.35731 28.2305 6.06522 31.4258 8.57314 33.9337C11.081 36.4416 14.2763 38.1495 17.7549 38.8414C21.2335 39.5334 24.8391 39.1782 28.1159 37.821C31.3926 36.4637 34.1933 34.1652 36.1638 31.2162C38.1342 28.2673 39.1859 24.8002 39.1859 21.2534C39.1807 16.4991 37.2896 11.9409 33.9278 8.57904C30.5659 5.21717 26.0078 3.32616 21.2534 3.32088ZM21.2534 35.201C18.4948 35.201 15.7982 34.383 13.5045 32.8504C11.2109 31.3178 9.42317 29.1395 8.36752 26.5909C7.31186 24.0424 7.03565 21.238 7.57382 18.5324C8.11199 15.8269 9.44037 13.3416 11.391 11.391C13.3416 9.44044 15.8268 8.11207 18.5323 7.5739C21.2379 7.03573 24.0423 7.31194 26.5909 8.36759C29.1394 9.42325 31.3178 11.2109 32.8503 13.5046C34.3829 15.7983 35.2009 18.4949 35.2009 21.2534C35.197 24.9514 33.7262 28.4967 31.1114 31.1115C28.4966 33.7263 24.9513 35.197 21.2534 35.201ZM29.3048 19.8438C29.4905 20.0289 29.6379 20.2488 29.7385 20.491C29.839 20.7332 29.8908 20.9929 29.8908 21.2551C29.8908 21.5173 29.839 21.777 29.7385 22.0192C29.6379 22.2614 29.4905 22.4814 29.3048 22.6665L23.9914 27.9798C23.8061 28.1652 23.586 28.3122 23.3439 28.4125C23.1017 28.5128 22.8422 28.5644 22.58 28.5644C22.3179 28.5644 22.0584 28.5128 21.8162 28.4125C21.5741 28.3122 21.354 28.1652 21.1687 27.9798C20.9833 27.7945 20.8363 27.5744 20.736 27.3323C20.6357 27.0901 20.5841 26.8306 20.5841 26.5685C20.5841 26.3063 20.6357 26.0468 20.736 25.8046C20.8363 25.5625 20.9833 25.3424 21.1687 25.1571L23.0798 23.246H14.6117C14.0832 23.246 13.5764 23.036 13.2028 22.6624C12.8291 22.2887 12.6192 21.7819 12.6192 21.2534C12.6192 20.725 12.8291 20.2182 13.2028 19.8445C13.5764 19.4709 14.0832 19.2609 14.6117 19.2609H23.0798L21.167 17.3498C20.9817 17.1645 20.8347 16.9444 20.7344 16.7023C20.6341 16.4601 20.5824 16.2005 20.5824 15.9384C20.5824 15.6763 20.6341 15.4168 20.7344 15.1746C20.8347 14.9325 20.9817 14.7124 21.167 14.5271C21.3524 14.3417 21.5724 14.1947 21.8146 14.0944C22.0567 13.9941 22.3163 13.9425 22.5784 13.9425C22.8405 13.9425 23.1 13.9941 23.3422 14.0944C23.5844 14.1947 23.8044 14.3417 23.9897 14.5271L29.3048 19.8438Z"
+                  d="M42.51 21.255C42.51 32.7892 33.0392 42.26 21.505 42.26C9.97082 42.26 0.5 32.7892 0.5 21.255C0.5 9.72082 9.97082 0.25 21.505 0.25C33.0392 0.25 42.51 9.72082 42.51 21.255Z"
                   fill="#393939"
+                />
+                <path
+                  d="M14.7513 21.255L21.5048 14.5015L28.2583 21.255M21.5048 27.2585V14.9265"
+                  stroke="#F2F2F1"
+                  strokeWidth="2.1255"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </button>
           </div>
 
-          {/* Fatias dos outros livros (vertical no mobile, horizontal no desktop) */}
+          {/* Slices dos outros livros */}
           <div className={styles.bookSlices}>
             {featuredBooks.slice(1).map((book) => (
               <div key={book.id} className={styles.bookSlice}>
@@ -163,10 +231,7 @@ const Acervo: React.FC = () => {
                   alt={book.title}
                   className={styles.sliceImage}
                 />
-                <button
-                  className={styles.sliceExpandBtn}
-                  aria-label={`Ver ${book.title}`}
-                >
+                <button className={styles.sliceExpandBtn} aria-label="Expandir">
                   <svg
                     width="43"
                     height="43"
@@ -175,8 +240,15 @@ const Acervo: React.FC = () => {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M21.2534 3.32088C17.7066 3.32088 14.2396 4.37261 11.2906 6.34307C8.34158 8.31352 6.04312 11.1142 4.68584 14.391C3.32857 17.6677 2.97345 21.2733 3.66538 24.7519C4.35731 28.2305 6.06522 31.4258 8.57314 33.9337C11.081 36.4416 14.2763 38.1495 17.7549 38.8414C21.2335 39.5334 24.8391 39.1782 28.1159 37.821C31.3926 36.4637 34.1933 34.1652 36.1638 31.2162C38.1342 28.2673 39.1859 24.8002 39.1859 21.2534C39.1807 16.4991 37.2896 11.9409 33.9278 8.57904C30.5659 5.21717 26.0078 3.32616 21.2534 3.32088ZM21.2534 35.201C18.4948 35.201 15.7982 34.383 13.5045 32.8504C11.2109 31.3178 9.42317 29.1395 8.36752 26.5909C7.31186 24.0424 7.03565 21.238 7.57382 18.5324C8.11199 15.8269 9.44037 13.3416 11.391 11.391C13.3416 9.44044 15.8268 8.11207 18.5323 7.5739C21.2379 7.03573 24.0423 7.31194 26.5909 8.36759C29.1394 9.42325 31.3178 11.2109 32.8503 13.5046C34.3829 15.7983 35.2009 18.4949 35.2009 21.2534C35.197 24.9514 33.7262 28.4967 31.1114 31.1115C28.4966 33.7263 24.9513 35.197 21.2534 35.201ZM29.3048 19.8438C29.4905 20.0289 29.6379 20.2488 29.7385 20.491C29.839 20.7332 29.8908 20.9929 29.8908 21.2551C29.8908 21.5173 29.839 21.777 29.7385 22.0192C29.6379 22.2614 29.4905 22.4814 29.3048 22.6665L23.9914 27.9798C23.8061 28.1652 23.586 28.3122 23.3439 28.4125C23.1017 28.5128 22.8422 28.5644 22.58 28.5644C22.3179 28.5644 22.0584 28.5128 21.8162 28.4125C21.5741 28.3122 21.354 28.1652 21.1687 27.9798C20.9833 27.7945 20.8363 27.5744 20.736 27.3323C20.6357 27.0901 20.5841 26.8306 20.5841 26.5685C20.5841 26.3063 20.6357 26.0468 20.736 25.8046C20.8363 25.5625 20.9833 25.3424 21.1687 25.1571L23.0798 23.246H14.6117C14.0832 23.246 13.5764 23.036 13.2028 22.6624C12.8291 22.2887 12.6192 21.7819 12.6192 21.2534C12.6192 20.725 12.8291 20.2182 13.2028 19.8445C13.5764 19.4709 14.0832 19.2609 14.6117 19.2609H23.0798L21.167 17.3498C20.9817 17.1645 20.8347 16.9444 20.7344 16.7023C20.6341 16.4601 20.5824 16.2005 20.5824 15.9384C20.5824 15.6763 20.6341 15.4168 20.7344 15.1746C20.8347 14.9325 20.9817 14.7124 21.167 14.5271C21.3524 14.3417 21.5724 14.1947 21.8146 14.0944C22.0567 13.9941 22.3163 13.9425 22.5784 13.9425C22.8405 13.9425 23.1 13.9941 23.3422 14.0944C23.5844 14.1947 23.8044 14.3417 23.9897 14.5271L29.3048 19.8438Z"
-                      fill="#ffffffff"
+                      d="M42.51 21.255C42.51 32.7892 33.0392 42.26 21.505 42.26C9.97082 42.26 0.5 32.7892 0.5 21.255C0.5 9.72082 9.97082 0.25 21.505 0.25C33.0392 0.25 42.51 9.72082 42.51 21.255Z"
+                      fill="#393939"
+                    />
+                    <path
+                      d="M14.7513 21.255L21.5048 14.5015L28.2583 21.255M21.5048 27.2585V14.9265"
+                      stroke="#F2F2F1"
+                      strokeWidth="2.1255"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                 </button>
@@ -260,7 +332,11 @@ const Acervo: React.FC = () => {
         {/* Seção 3: Grid de Livros */}
         <div className={styles.booksGrid}>
           {catalogBooks.map((book) => (
-            <div key={book.id} className={styles.bookCard}>
+            <div
+              key={book.id}
+              className={styles.bookCard}
+              onClick={() => handleOpenViewModal(book)}
+            >
               <img
                 src={book.cover}
                 alt={book.title}
@@ -271,7 +347,11 @@ const Acervo: React.FC = () => {
         </div>
 
         {/* Botão flutuante + (mobile) */}
-        <button className={styles.floatingBtn} aria-label="Ver mais livros">
+        <button
+          className={styles.floatingBtn}
+          onClick={handleOpenAddModal}
+          aria-label="Ver mais livros"
+        >
           <svg width="24" height="24" viewBox="0 0 19 19" fill="none">
             <path
               d="M18.75 9.375C18.75 9.67337 18.6315 9.95952 18.4205 10.1705C18.2095 10.3815 17.9234 10.5 17.625 10.5H10.5V17.625C10.5 17.9234 10.3815 18.2095 10.1705 18.4205C9.95952 18.6315 9.67337 18.75 9.375 18.75C9.07663 18.75 8.79048 18.6315 8.5795 18.4205C8.36853 18.2095 8.25 17.9234 8.25 17.625V10.5H1.125C0.826631 10.5 0.540483 10.3815 0.329505 10.1705C0.118526 9.95952 0 9.67337 0 9.375C0 9.07663 0.118526 8.79048 0.329505 8.5795C0.540483 8.36853 0.826631 8.25 1.125 8.25H8.25V1.125C8.25 0.826631 8.36853 0.540483 8.5795 0.329505C8.79048 0.118526 9.07663 0 9.375 0C9.67337 0 9.95952 0.118526 10.1705 0.329505C10.3815 0.540483 10.5 0.826631 10.5 1.125V8.25H17.625C17.9234 8.25 18.2095 8.36853 18.4205 8.5795C18.6315 8.79048 18.75 9.07663 18.75 9.375Z"
@@ -311,6 +391,51 @@ const Acervo: React.FC = () => {
           </button>
         </div>
       </section>
+
+      {/* Modais */}
+      <AddMaterial
+        isOpen={isAddModalOpen}
+        onClose={handleCloseAddModal}
+        onSave={handleSaveNewMaterial}
+      />
+
+      {selectedBook && (
+        <>
+          <ViewMaterial
+            isOpen={isViewModalOpen}
+            onClose={handleCloseViewModal}
+            onEdit={handleEditFromView}
+            material={{
+              title: selectedBook.title,
+              author: selectedBook.author,
+              year: selectedBook.year,
+              pages: "176",
+              publisher: "Companhia das Letras",
+              summary:
+                "Um jovem que viaja para a cidade de Candeia para cumprir um pedido de sua mãe moribunda: encontrar o pai desconhecido.",
+              coverImage: selectedBook.cover,
+            }}
+          />
+
+          <EditMaterial
+            isOpen={isEditModalOpen}
+            onClose={handleCloseEditModal}
+            onSave={handleSaveEditMaterial}
+            onDelete={handleDeleteMaterial}
+            initialData={{
+              title: selectedBook.title,
+              author: selectedBook.author,
+              pages: "176",
+              isbn: "123456789",
+              year: selectedBook.year.toString(),
+              publisher: "Companhia das Letras",
+              summary:
+                "Um jovem que viaja para a cidade de Candeia para cumprir um pedido de sua mãe moribunda: encontrar o pai desconhecido.",
+              coverImage: selectedBook.cover,
+            }}
+          />
+        </>
+      )}
     </div>
   );
 };
