@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 import styles from "./Navbar.module.css";
 
 interface NavbarProps {
@@ -10,6 +11,7 @@ export default function Navbar({ variant = "light" }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -37,9 +39,10 @@ export default function Navbar({ variant = "light" }: NavbarProps) {
 
   const handleLogout = () => {
     setIsMenuOpen(false);
-    // Implementar lógica de logout aqui
-    // localStorage.removeItem('token');
-    navigate("/");
+    // Fazer logout e limpar tokens
+    logout();
+    // Redirecionar para a página de login
+    navigate("/Login");
   };
 
   return (

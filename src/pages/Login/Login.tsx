@@ -1,16 +1,49 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
+import { useAuth } from "../../hooks/useAuth";
+import { useToast } from "../../hooks/useToast";
 import styles from "./Login.module.css";
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { login } = useAuth();
+  const { showInfo } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
+    setLoading(true);
+
+    try {
+      console.log("Tentando fazer login com:", { username, password: "***" });
+
+      await login({ username, password });
+
+      console.log("Login realizado com sucesso!");
+      showInfo("Login realizado com sucesso!");
+
+      // Redirecionar para home após login
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+    } catch (error: unknown) {
+      console.error("Erro ao fazer login:", error);
+
+      const err = error as {
+        details?: Record<string, string[]>;
+        message?: string;
+      };
+
+      const errorMessage =
+        err?.message || "Erro ao fazer login. Verifique suas credenciais.";
+      showInfo(errorMessage);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const togglePasswordVisibility = () => {
@@ -18,22 +51,21 @@ const Login: React.FC = () => {
   };
 
   return (
-    
     <AuthLayout variant="Login">
       <h1 className={styles.title}>Login</h1>
 
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.formGroup}>
-          <label htmlFor="email" className={styles.label}>
-            E-mail
+          <label htmlFor="username" className={styles.label}>
+            Nome de usuário
           </label>
           <input
-            type="email"
-            id="email"
+            type="text"
+            id="username"
             className={styles.input}
-            placeholder="seuemail@email.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Digite seu nome de usuário"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
@@ -83,8 +115,12 @@ const Login: React.FC = () => {
           </a>
         </div>
 
-        <button type="submit" className={styles.submitButton}>
-          Entrar
+        <button
+          type="submit"
+          className={styles.submitButton}
+          disabled={loading}
+        >
+          {loading ? "Entrando..." : "Entrar"}
         </button>
       </form>
     </AuthLayout>

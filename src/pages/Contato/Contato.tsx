@@ -1,15 +1,45 @@
 import { useState } from "react";
 import styles from "./Contato.module.css";
+import { institucionalService } from "../../services/institucionalService";
+import { useToast } from "../../hooks/useToast";
 
 export default function Contato() {
   const [nome, setNome] = useState("");
-  const [idade, setIdade] = useState("");
+  const [telefone, setTelefone] = useState("");
   const [email, setEmail] = useState("");
   const [mensagem, setMensagem] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { showSuccess, showInfo } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Dados do formulário:", { nome, idade, email, mensagem });
+
+    if (!nome || !telefone || !email || !mensagem) {
+      showInfo("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await institucionalService.createContato({
+        nome,
+        telefone,
+        email,
+        mensagem,
+      });
+
+      showSuccess("Mensagem enviada com sucesso!"); // Limpar formulário
+      setNome("");
+      setTelefone("");
+      setEmail("");
+      setMensagem("");
+    } catch (error) {
+      console.error("Erro ao enviar contato:", error);
+      showInfo("Erro ao enviar mensagem. Tente novamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -69,16 +99,16 @@ export default function Contato() {
                 </div>
 
                 <div className={styles.formGroup}>
-                  <label htmlFor="idade" className={styles.label}>
-                    Idade
+                  <label htmlFor="telefone" className={styles.label}>
+                    Telefone
                   </label>
                   <input
-                    type="number"
-                    id="idade"
+                    type="tel"
+                    id="telefone"
                     className={styles.input}
-                    placeholder="23"
-                    value={idade}
-                    onChange={(e) => setIdade(e.target.value)}
+                    placeholder="(84) 99999-9999"
+                    value={telefone}
+                    onChange={(e) => setTelefone(e.target.value)}
                     required
                   />
                 </div>
@@ -119,15 +149,19 @@ export default function Contato() {
                     className={styles.cancelButton}
                     onClick={() => {
                       setNome("");
-                      setIdade("");
+                      setTelefone("");
                       setEmail("");
                       setMensagem("");
                     }}
                   >
                     Cancelar
                   </button>
-                  <button type="submit" className={styles.submitButton}>
-                    Enviar
+                  <button
+                    type="submit"
+                    className={styles.submitButton}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Enviando..." : "Enviar"}
                     <svg
                       width="20"
                       height="20"

@@ -1,4 +1,4 @@
-/* ===== BASE STYLES (MOBILE FIRST) ===== */
+/* Estilos base (mobile primeiro) */
 
 .acervo {
   padding: 20px 16px;
@@ -7,7 +7,7 @@
   font-family: "DM Sans", "Inter", sans-serif;
 }
 
-/* ===== SEÇÃO 1: NOVIDADES DA SEMANA ===== */
+/* Seção: Novidades da semana */
 
 .featuredSection {
   margin-bottom: 40px;
@@ -175,7 +175,7 @@
   margin: 0;
 }
 
-/* ===== SEÇÃO 2: VEJA NOSSO CATÁLOGO ===== */
+/* Seção: Veja nosso catálogo */
 
 .catalogSection {
   position: relative;
@@ -272,7 +272,7 @@
   display: none;
 }
 
-/* ===== SEÇÃO 3: GRID DE LIVROS ===== */
+/* Seção: Grid de livros */
 
 .booksGrid {
   display: grid;
@@ -335,7 +335,7 @@
   height: 24px;
 }
 
-/* ===== SEÇÃO 4: PAGINAÇÃO ===== */
+/* Seção: Paginação */
 
 .pagination {
   display: flex;
@@ -399,7 +399,7 @@
   border-color: #81013a;
 }
 
-/* ===== DESKTOP STYLES (@media min-width: 992px) ===== */
+/* Desktop (992px ou mais) */
 
 @media (min-width: 992px) {
   .acervo {
@@ -608,7 +608,7 @@
   }
 }
 
-/* ===== ACESSIBILIDADE ===== */
+/* Melhorias de acessibilidade */
 
 .expandBtn:focus,
 .sliceExpandBtn:focus,

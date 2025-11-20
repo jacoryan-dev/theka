@@ -1,4 +1,4 @@
-/* ===== ESTILOS BASE (MOBILE-FIRST) ===== */
+/* Estilos base (mobile primeiro) */
 
 /* Página Principal */
 .sobreNosPage {
@@ -6,7 +6,7 @@
   overflow-x: hidden;
 }
 
-/* ===== SEÇÃO HERO ===== */
+/* Seção hero (banner principal) */
 .heroSection {
   background: #bf0259;
   padding: 2rem 1rem;
@@ -63,7 +63,7 @@
   padding: 0 1rem;
 }
 
-/* ===== SEÇÃO TAGS ===== */
+/* Seção de tags */
 .tagsSection {
   padding: 2rem 0;
   background: #ffffff;
@@ -98,7 +98,7 @@
   white-space: nowrap;
 }
 
-/* ===== SEÇÃO NOSSA HISTÓRIA ===== */
+/* Seção: Nossa história */
 .historySection {
   padding: 3rem 0;
   background: #ffffff;
@@ -252,7 +252,7 @@
   margin: 0;
 }
 
-/* ===== SEÇÃO NOSSA EQUIPE ===== */
+/* Seção: Nossa equipe */
 .teamSection {
   padding: 3rem 0 4rem;
   background: #ffffff;
@@ -360,7 +360,7 @@
   white-space: nowrap;
 }
 
-/* ===== MEDIA QUERIES - DESKTOP ===== */
+/* Desktop (992px ou mais) */
 @media (min-width: 992px) {
   /* Hero Section Desktop */
   .heroSection {

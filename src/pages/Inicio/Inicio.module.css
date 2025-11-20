@@ -1,455 +1,460 @@
+/* Estilos base (mobile primeiro) */
+
+.inicioContainer {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* SEÇÃO 1: HERO */
+.heroSection {
+  background-color: #a1d54a;
+  border-radius: 16.86px;
+  padding: 24px;
+  margin: 16px;
+  position: relative;
+  overflow: hidden; /* Garante o recorte da arte no mobile */
+  min-height: 400px;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.logoContainer {
+  margin-bottom: 16px;
+}
+
+.logoContainer svg {
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+  margin-bottom: px;
+  height: auto;
+}
+
+.heroSlogan {
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  max-width: 200px;
+}
+
+.heroButton {
+  background-color: #f78520; /* Cor corrigida conforme botão Figma */
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.heroButton:hover {
+  background-color: #e67510;
+  transform: translateY(-2px);
+}
+
+.heroArtwork {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.blobSvg {
+  position: absolute;
+  width: 280px;
+  height: 200px;
+  right: 0;
+  top: 190px;
+}
+
+.sneakerSvg {
+  position: absolute;
+  height: auto;
+  width: 130px;
+  right: 210px;
+  bottom: 0;
+}
+
+/* SEÇÃO 2: INTRODUÇÃO */
+.introSection {
+  padding: 40px 16px;
+}
+
+.introContent {
+  margin-bottom: 40px;
+}
+
+.introHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.introIcon {
+  width: 48px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.introTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #81013a;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.introText {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333333;
+  margin-bottom: 24px;
+}
+
+.introLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.linkWithIcon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #81013a;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border: 2px solid #81013a;
+  border-radius: 24px;
+  padding: 10px 16px;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.linkWithIcon svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.linkWithIcon:hover {
+  background-color: #81013a;
+  color: #ffffff;
+}
+
+.linkWithIcon:hover svg path {
+  fill: #ffffff;
+}
+
+/* Carrossel de Livros - Mobile (1 por vez, centralizado) */
+.bookCarousel {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.carouselBookWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.bookCard {
+  width: 280px;
+  height: 420px;
+  border-radius: 20px;
+  padding: 29px 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.bookBlue {
+  background-color: #87ceeb;
+} /* Fallback se img falhar */
+.bookYellow {
+  background-color: #ffe66d;
+}
+.bookGreen {
+  background-color: #4ecdc4;
+}
+
+.bookCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Customização do Carousel do Bootstrap */
+.bookCarousel :global(.carousel-control-prev),
+.bookCarousel :global(.carousel-control-next) {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(129, 1, 58, 0.8);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+}
+
+.bookCarousel :global(.carousel-control-prev) {
+  left: 0;
+}
+.bookCarousel :global(.carousel-control-next) {
+  right: 0;
+}
+
+/* SEÇÃO 3: ESTATÍSTICAS */
+.statsSection {
+  padding: 40px 16px;
+  background-color: #ffffff;
+}
+
+.statsHeader {
+  margin-bottom: 32px;
+}
+
+.statsTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #81013a;
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* Layout Mobile: 2 colunas para porcentagem, 1 coluna para numéricos */
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.statCard {
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  min-height: 140px;
+}
+
+.statIcon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 50px;
+  height: 50px;
+}
+
+.statValue {
+  font-size: 40px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: auto 0 8px 0; /* Centraliza verticalmente */
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Grid específico para mobile */
+.percentageCard {
+  grid-column: span 1;
+}
+
+.numericCard {
+  grid-column: span 2; /* Ocupa largura total no mobile */
+}
+
 /* ===================================
-   MOBILE-FIRST STYLES (BASE)
-   =================================== */
-
-   .inicioContainer {
-    width: 100%;
-    min-height: 100vh;
-  }
-  
-  /* SEÇÃO 1: HERO */
-  .heroSection {
-    background-color: #A1D54A;
-    border-radius: 16.86px;
-    padding: 24px;
-    margin: 16px;
-    position: relative;
-    overflow: hidden; /* Garante o recorte da arte no mobile */
-    min-height: 400px;
-  }
-  
-  .heroContent {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .logoContainer {
-    margin-bottom: 16px;
-    
-  }
-  
-  .logoContainer svg {
-    display: flex;
-    flex-direction: column;
-    width: 120px;
-    margin-bottom: px;
-    height: auto;
-  }
-  
-  .heroSlogan {
-    font-size: 16px;
-    font-weight: 500;
-    color: #FFFFFF;
-    margin-bottom: 20px;
-    line-height: 1.4;
-    max-width: 200px;
-  }
-  
-  .heroButton {
-    background-color: #F78520; /* Cor corrigida conforme botão Figma */
-    color: #FFFFFF;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 24px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .heroButton:hover {
-    background-color: #e67510;
-    transform: translateY(-2px);
-  }
-  
-  
-  .heroArtwork {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-  }
-  
-  .blobSvg {
-    position: absolute;
-    width: 280px;
-    height: 200px;
-    right: 0;
-    top: 190px;
-  }
-
-  .sneakerSvg {
-    position: absolute;
-    height: auto;
-    width: 130px;
-    right: 210px;
-    bottom: 0;
-
-  }
-  
-  /* SEÇÃO 2: INTRODUÇÃO */
-  .introSection {
-    padding: 40px 16px;
-  }
-  
-  .introContent {
-    margin-bottom: 40px;
-  }
-  
-  .introHeader {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  
-  .introIcon {
-    width: 48px;
-    height: auto;
-    flex-shrink: 0;
-  }
-  
-  .introTitle {
-    font-size: 24px;
-    font-weight: 700;
-    color: #81013A;
-    line-height: 1.3;
-    margin: 0;
-  }
-  
-  .introText {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #333333;
-    margin-bottom: 24px;
-  }
-  
-  .introLinks {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .linkWithIcon {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #81013A;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    border: 2px solid #81013A;
-    border-radius: 24px;
-    padding: 10px 16px;
-    transition: all 0.3s ease;
-    width: fit-content;
-  }
-  
-  .linkWithIcon svg {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-  }
-  
-  .linkWithIcon:hover {
-    background-color: #81013A;
-    color: #FFFFFF;
-  }
-  
-  .linkWithIcon:hover svg path {
-    fill: #FFFFFF;
-  }
-  
-  /* Carrossel de Livros - Mobile (1 por vez, centralizado) */
-  .bookCarousel {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .carouselBookWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-  }
-  
-  .bookCard {
-    width: 280px;
-    height: 420px;
-    border-radius: 20px;
-    padding: 29px 24px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-  }
-  
-  .bookBlue { background-color: #87CEEB; } /* Fallback se img falhar */
-  .bookYellow { background-color: #FFE66D; }
-  .bookGreen { background-color: #4ECDC4; }
-  
-  .bookCard img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 8px;
-  }
-  
-  /* Customização do Carousel do Bootstrap */
-  .bookCarousel :global(.carousel-control-prev),
-  .bookCarousel :global(.carousel-control-next) {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(129, 1, 58, 0.8);
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 1;
-  }
-  
-  .bookCarousel :global(.carousel-control-prev) { left: 0; }
-  .bookCarousel :global(.carousel-control-next) { right: 0; }
-  
-  /* SEÇÃO 3: ESTATÍSTICAS */
-  .statsSection {
-    padding: 40px 16px;
-    background-color: #FFFFFF;
-  }
-  
-  .statsHeader {
-    margin-bottom: 32px;
-  }
-  
-  .statsTitle {
-    font-size: 28px;
-    font-weight: 700;
-    color: #81013A;
-    line-height: 1.3;
-    margin: 0;
-  }
-  
-  /* Layout Mobile: 2 colunas para porcentagem, 1 coluna para numéricos */
-  .statsGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  
-  .statCard {
-    border-radius: 16px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    position: relative;
-    min-height: 140px;
-  }
-  
-  .statIcon {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 50px;
-    height: 50px;
-  }
-  
-  .statValue {
-    font-size: 40px;
-    font-weight: 700;
-    color: #FFFFFF;
-    margin: auto 0 8px 0; /* Centraliza verticalmente */
-    line-height: 1;
-  }
-  
-  .statLabel {
-    font-size: 12px;
-    font-weight: 500;
-    color: #FFFFFF;
-    margin: 0;
-    line-height: 1.4;
-  }
-  
-  /* Grid específico para mobile */
-  .percentageCard {
-    grid-column: span 1;
-  }
-  
-  .numericCard {
-    grid-column: span 2; /* Ocupa largura total no mobile */
-  }
-  
-  /* ===================================
      DESKTOP STYLES (>= 992px)
      =================================== */
-  @media (min-width: 992px) {
-    .inicioContainer {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      position: relative;
-    }
-  
-    /* HERO - Layout com posicionamento absoluto fiel ao Figma */
-    .heroSection {
-      /* width: 1200px; height: 511px; top: 198px; */
-      max-width: 1200px;
-      height: 511px;
-      margin: 40px 0;
-      padding: 60px;
-      display: block; /* Remove grid, usa absoluto interno */
-      overflow: visible;
-    }
-  
-    .heroContent {
-      width: 40%;
-      margin-top: 60px;
-      margin-left: 40px;
-    }
-  
-    .logoContainer svg {
-      width: 226px; /* Tamanho original SVG */
-    }
-  
-    .heroSlogan {
-      font-size: 24px;
-      max-width: 300px;
-    }
-  
-    /* Artwork Desktop */
-    .heroArtwork {
-      overflow: visible;
-    }
-    
-    /* Blob Laranja Desktop */
-    .blobSvg {
-      width: 567px;
-      height: 499px;
-      right: 0; /* Ajustado para alinhar com borda direita */
-      top: 0; /* Ajuste fino visual */
-    }
-  
-    /* Tênis Desktop */
-    .sneakerSvg {
-      width: 313px;
-      height: 307px;
-      right: 500px; /* Posição relativa ao blob */
-      bottom: 0;
-    }
-  
-    /* INTRODUÇÃO */
-    .introSection {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      padding: 80px 0;
-      align-items: center;
-    }
-  
-    .introTitle {
-      font-size: 36px;
-    }
-  
-    /* CARROSSEL DESKTOP - EFEITO LEQUE */
-    .bookCarousel {
-      max-width: 100%;
-      position: relative;
-      height: 650px; /* Altura para acomodar os livros rotacionados */
-    }
-  
-    .carouselBookWrapper {
-      height: 100%;
-      position: relative;
-      padding: 0;
-    }
-  
-    /* Permitir sobreposição */
-    .bookCarousel :global(.carousel-inner) {
-      overflow: visible;
-    }
-    
-    .bookCarousel :global(.carousel-item) {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: block !important; /* Força todos visíveis para empilhar */
-      opacity: 1 !important;
-      visibility: visible !important;
-      transition: none; /* Remove transição de slide padrão */
-    }
-  
-    .bookCard {
-      width: 422px;
-      height: 631px;
-      position: absolute;
-      box-shadow: none; /* Sombra controlada ou removida conforme design clean */
-    }
-  
-    /* Posicionamento Específico Desktop (Copiado dos dados fornecidos) */
-    
-    /* Livro 1 Azul - Base (Fundo) */
-    .bookCarousel :global(.carousel-item:nth-child(3)) .bookBlue {
-      top: 55px;
-      left: 147px;
-      transform: rotate(0deg);
-      z-index: 1;
-    }
-  
-    /* Livro 2 Amarelo - Meio */
-    .bookCarousel :global(.carousel-item:nth-child(2)) .bookYellow {
-      top: 30.61px;
-      left: 108.19px;
-      transform: rotate(-7.42deg);
-      z-index: 2;
-    }
-  
-    /* Livro 3 Verde - Topo (Frente) */
-    .bookCarousel :global(.carousel-item:nth-child(1)) .bookGreen {
-      top: 71px;
-      left: 128px;
-      transform: rotate(3.41deg);
-      z-index: 3;
-    }
-  
-    /* Esconde controles no desktop pois é estático/leque */
-    .bookCarousel :global(.carousel-control-prev),
-    .bookCarousel :global(.carousel-control-next) {
-      display: none;
-    }
-  
-    /* ESTATÍSTICAS - Layout 5 colunas */
-    .statsSection {
-      padding: 80px 0;
-    }
-  
-    .statsGrid {
-      grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
-    }
-  
-    /* Reseta spans do mobile */
-    .percentageCard,
-    .numericCard {
-      grid-column: span 1;
-    }
-  
-    .statCard {
-      padding: 32px 24px;
-      min-height: 200px;
-    }
-  
-    .statValue {
-      font-size: 56px;
-    }
+@media (min-width: 992px) {
+  .inicioContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
   }
+
+  /* HERO - Layout com posicionamento absoluto fiel ao Figma */
+  .heroSection {
+    /* width: 1200px; height: 511px; top: 198px; */
+    max-width: 1200px;
+    height: 511px;
+    margin: 40px 0;
+    padding: 60px;
+    display: block; /* Remove grid, usa absoluto interno */
+    overflow: visible;
+  }
+
+  .heroContent {
+    width: 40%;
+    margin-top: 60px;
+    margin-left: 40px;
+  }
+
+  .logoContainer svg {
+    width: 226px; /* Tamanho original SVG */
+  }
+
+  .heroSlogan {
+    font-size: 24px;
+    max-width: 300px;
+  }
+
+  /* Artwork Desktop */
+  .heroArtwork {
+    overflow: visible;
+  }
+
+  /* Blob Laranja Desktop */
+  .blobSvg {
+    width: 567px;
+    height: 499px;
+    right: 0; /* Ajustado para alinhar com borda direita */
+    top: 0; /* Ajuste fino visual */
+  }
+
+  /* Tênis Desktop */
+  .sneakerSvg {
+    width: 313px;
+    height: 307px;
+    right: 500px; /* Posição relativa ao blob */
+    bottom: 0;
+  }
+
+  /* INTRODUÇÃO */
+  .introSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 80px 0;
+    align-items: center;
+  }
+
+  .introTitle {
+    font-size: 36px;
+  }
+
+  /* CARROSSEL DESKTOP - EFEITO LEQUE */
+  .bookCarousel {
+    max-width: 100%;
+    position: relative;
+    height: 650px; /* Altura para acomodar os livros rotacionados */
+  }
+
+  .carouselBookWrapper {
+    height: 100%;
+    position: relative;
+    padding: 0;
+  }
+
+  /* Permitir sobreposição */
+  .bookCarousel :global(.carousel-inner) {
+    overflow: visible;
+  }
+
+  .bookCarousel :global(.carousel-item) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block !important; /* Força todos visíveis para empilhar */
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: none; /* Remove transição de slide padrão */
+  }
+
+  .bookCard {
+    width: 422px;
+    height: 631px;
+    position: absolute;
+    box-shadow: none; /* Sombra controlada ou removida conforme design clean */
+  }
+
+  /* Posicionamento Específico Desktop (Copiado dos dados fornecidos) */
+
+  /* Livro 1 Azul - Base (Fundo) */
+  .bookCarousel :global(.carousel-item:nth-child(3)) .bookBlue {
+    top: 55px;
+    left: 147px;
+    transform: rotate(0deg);
+    z-index: 1;
+  }
+
+  /* Livro 2 Amarelo - Meio */
+  .bookCarousel :global(.carousel-item:nth-child(2)) .bookYellow {
+    top: 30.61px;
+    left: 108.19px;
+    transform: rotate(-7.42deg);
+    z-index: 2;
+  }
+
+  /* Livro 3 Verde - Topo (Frente) */
+  .bookCarousel :global(.carousel-item:nth-child(1)) .bookGreen {
+    top: 71px;
+    left: 128px;
+    transform: rotate(3.41deg);
+    z-index: 3;
+  }
+
+  /* Esconde controles no desktop pois é estático/leque */
+  .bookCarousel :global(.carousel-control-prev),
+  .bookCarousel :global(.carousel-control-next) {
+    display: none;
+  }
+
+  /* ESTATÍSTICAS - Layout 5 colunas */
+  .statsSection {
+    padding: 80px 0;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+
+  /* Reseta spans do mobile */
+  .percentageCard,
+  .numericCard {
+    grid-column: span 1;
+  }
+
+  .statCard {
+    padding: 32px 24px;
+    min-height: 200px;
+  }
+
+  .statValue {
+    font-size: 56px;
+  }
+}

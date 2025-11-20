@@ -1,4 +1,4 @@
-/* FOOTER STYLES (MOBILE-FIRST) */
+/* Estilos do rodapé (mobile primeiro) */
 
 .footer {
   background-color: rgba(129, 1, 58, 1);
@@ -92,7 +92,7 @@
   margin: 0;
 }
 
-/* TABLET (768px+) */
+/* Tablet (768px ou mais) */
 
 @media (min-width: 768px) {
   .footer {

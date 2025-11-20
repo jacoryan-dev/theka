@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
+import { ToastProvider } from "./components/Toast";
 import RecuperarSenha from "./pages/RecuperarSenha/RecuperarSenha.tsx";
 import Login from "./pages/Login/Login.tsx";
 import "./App.css";
@@ -12,49 +14,53 @@ import Acervo from "./pages/Acervo/Acervo.tsx";
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        {/* Rotas sem Navbar/Footer (Autenticação) */}
-        <Route path="/Login" element={<Login />} />
-        <Route path="/RecuperarSenha" element={<RecuperarSenha />} />
-        <Route path="/RedefinirSenha" element={<RedefinirSenha />} />
-        <Route path="/Cadastro" element={<Cadastro />} />
+    <AuthProvider>
+      <ToastProvider>
+        <Router>
+          <Routes>
+            {/* Rotas sem Navbar/Footer (Autenticação) */}
+            <Route path="/Login" element={<Login />} />
+            <Route path="/RecuperarSenha" element={<RecuperarSenha />} />
+            <Route path="/RedefinirSenha" element={<RedefinirSenha />} />
+            <Route path="/Cadastro" element={<Cadastro />} />
 
-        {/* Rotas com Navbar/Footer (Páginas principais) */}
-        <Route
-          path="/"
-          element={
-            <MainLayout>
-              <Inicio />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/Acervo"
-          element={
-            <MainLayout>
-              <Acervo />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/Contato"
-          element={
-            <MainLayout>
-              <Contato />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/SobreNos"
-          element={
-            <MainLayout navbarVariant="pink">
-              <SobreNos />
-            </MainLayout>
-          }
-        />
-      </Routes>
-    </Router>
+            {/* Rotas com Navbar/Footer (Páginas principais) */}
+            <Route
+              path="/"
+              element={
+                <MainLayout>
+                  <Inicio />
+                </MainLayout>
+              }
+            />
+            <Route
+              path="/Acervo"
+              element={
+                <MainLayout>
+                  <Acervo />
+                </MainLayout>
+              }
+            />
+            <Route
+              path="/Contato"
+              element={
+                <MainLayout>
+                  <Contato />
+                </MainLayout>
+              }
+            />
+            <Route
+              path="/SobreNos"
+              element={
+                <MainLayout navbarVariant="pink">
+                  <SobreNos />
+                </MainLayout>
+              }
+            />
+          </Routes>
+        </Router>
+      </ToastProvider>
+    </AuthProvider>
   );
 };
 

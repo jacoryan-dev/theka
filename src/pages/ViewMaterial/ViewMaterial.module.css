@@ -1,4 +1,4 @@
-/* ===== BASE STYLES (MOBILE FIRST) ===== */
+/* Estilos base (mobile primeiro) */
 
 .overlay {
   display: none;
@@ -23,7 +23,7 @@
   flex-direction: column;
 }
 
-/* ===== BOTÃO FECHAR ===== */
+/* Botão fechar */
 
 .closeButton {
   position: absolute;
@@ -52,7 +52,7 @@
   height: 20px;
 }
 
-/* ===== SEÇÃO DA CAPA ===== */
+/* Seção da capa do livro */
 
 .coverSection {
   width: 100%;
@@ -71,7 +71,7 @@
   object-fit: cover;
 }
 
-/* ===== SEÇÃO DE INFORMAÇÕES ===== */
+/* Seção de informações do livro */
 
 .infoSection {
   flex: 1;
@@ -135,7 +135,7 @@
   margin: 0;
 }
 
-/* ===== BOTÃO EDITAR ===== */
+/* Botão editar */
 
 .editButton {
   display: flex;
@@ -170,7 +170,7 @@
   height: 24px;
 }
 
-/* ===== DESKTOP STYLES (@media min-width: 992px) ===== */
+/* Desktop (992px ou mais) */
 
 @media (min-width: 992px) {
   .overlay {
@@ -191,7 +191,7 @@
     transform: translate(-50%, -50%);
     width: 90%;
     max-width: 600px;
-    height: 600PX;
+    height: 600px;
     max-height: 80vh;
     background: #ffffff;
     border-radius: 32px;
@@ -282,7 +282,7 @@
   }
 }
 
-/* ===== ACESSIBILIDADE ===== */
+/* Melhorias de acessibilidade */
 
 .closeButton:focus,
 .editButton:focus {

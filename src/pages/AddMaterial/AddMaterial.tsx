@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import styles from "./AddMaterial.module.css";
+import type { Genero, Editora } from "../../types";
 
 interface AddMaterialProps {
   isOpen: boolean;
   onClose: () => void;
   onSave: (material: MaterialData) => void;
+  generos?: Genero[];
+  editoras?: Editora[];
 }
 
 export interface MaterialData {
@@ -14,11 +17,18 @@ export interface MaterialData {
   isbn: string;
   year: string;
   publisher: string;
+  genre: string;
   summary: string;
   coverImage?: File | null;
 }
 
-const AddMaterial: React.FC<AddMaterialProps> = ({ isOpen, onClose, onSave }) => {
+const AddMaterial: React.FC<AddMaterialProps> = ({
+  isOpen,
+  onClose,
+  onSave,
+  generos = [],
+  editoras = [],
+}) => {
   const [formData, setFormData] = useState<MaterialData>({
     title: "",
     author: "",
@@ -26,6 +36,7 @@ const AddMaterial: React.FC<AddMaterialProps> = ({ isOpen, onClose, onSave }) =>
     isbn: "",
     year: "",
     publisher: "",
+    genre: "",
     summary: "",
     coverImage: null,
   });
@@ -33,7 +44,9 @@ const AddMaterial: React.FC<AddMaterialProps> = ({ isOpen, onClose, onSave }) =>
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -73,6 +86,7 @@ const AddMaterial: React.FC<AddMaterialProps> = ({ isOpen, onClose, onSave }) =>
       isbn: "",
       year: "",
       publisher: "",
+      genre: "",
       summary: "",
       coverImage: null,
     });
@@ -98,10 +112,19 @@ const AddMaterial: React.FC<AddMaterialProps> = ({ isOpen, onClose, onSave }) =>
               <div className={styles.imageSection}>
                 <div className={styles.imageUploadBox}>
                   {previewImage ? (
-                    <img src={previewImage} alt="Preview" className={styles.previewImage} />
+                    <img
+                      src={previewImage}
+                      alt="Preview"
+                      className={styles.previewImage}
+                    />
                   ) : (
                     <div className={styles.imagePlaceholder}>
-                      <svg width="54" height="46" viewBox="0 0 54 46" fill="none">
+                      <svg
+                        width="54"
+                        height="46"
+                        viewBox="0 0 54 46"
+                        fill="none"
+                      >
                         <path
                           d="M34.4531 12.7969C34.4531 12.0181 34.6841 11.2568 35.1167 10.6093C35.5494 9.9618 36.1643 9.45712 36.8838 9.1591C37.6033 8.86108 38.395 8.7831 39.1588 8.93503C39.9226 9.08696 40.6242 9.46197 41.1749 10.0126C41.7255 10.5633 42.1005 11.2649 42.2525 12.0287C42.4044 12.7925 42.3264 13.5842 42.0284 14.3037C41.7304 15.0232 41.2257 15.6381 40.5782 16.0708C39.9307 16.5034 39.1694 16.7344 38.3906 16.7344C37.3463 16.7344 36.3448 16.3195 35.6064 15.5811C34.868 14.8427 34.4531 13.8412 34.4531 12.7969ZM53.1562 4.92188V30.5156C53.1562 31.821 52.6377 33.0729 51.7147 33.9959C50.7916 34.9189 49.5397 35.4375 48.2344 35.4375H45.2812V40.3594C45.2812 41.6647 44.7627 42.9166 43.8397 43.8397C42.9166 44.7627 41.6647 45.2812 40.3594 45.2812H4.92188C3.61651 45.2812 2.36461 44.7627 1.44158 43.8397C0.518553 42.9166 0 41.6647 0 40.3594V12.7969C0 11.4915 0.518553 10.2396 1.44158 9.31658C2.36461 8.39355 3.61651 7.875 4.92188 7.875H9.84375V4.92188C9.84375 3.61651 10.3623 2.36461 11.2853 1.44158C12.2084 0.518553 13.4603 0 14.7656 0H48.2344C49.5397 0 50.7916 0.518553 51.7147 1.44158C52.6377 2.36461 53.1562 3.61651 53.1562 4.92188ZM39.375 35.4375H14.7656C13.4603 35.4375 12.2084 34.9189 11.2853 33.9959C10.3623 33.0729 9.84375 31.821 9.84375 30.5156V13.7812H5.90625V39.375H39.375V35.4375ZM34.0446 29.5312L25.5938 21.0804L17.1429 29.5312H34.0446ZM47.25 5.90625H15.75V22.5717L22.114 16.2077C23.037 15.285 24.2886 14.7667 25.5938 14.7667C26.8989 14.7667 28.1505 15.285 29.0735 16.2077L42.397 29.5312H47.25V5.90625Z"
                           fill="#F2F2F1"
@@ -134,7 +157,7 @@ const AddMaterial: React.FC<AddMaterialProps> = ({ isOpen, onClose, onSave }) =>
                 <div className={styles.formRow}>
                   <div className={styles.formGroup}>
                     <label htmlFor="title" className={styles.label}>
-                      Título no material:
+                      Título no material: *
                     </label>
                     <input
                       type="text"
@@ -165,7 +188,7 @@ const AddMaterial: React.FC<AddMaterialProps> = ({ isOpen, onClose, onSave }) =>
 
                   <div className={styles.formGroupSmall}>
                     <label htmlFor="isbn" className={styles.label}>
-                      ISBM
+                      ISBN *
                     </label>
                     <input
                       type="text"
@@ -173,8 +196,9 @@ const AddMaterial: React.FC<AddMaterialProps> = ({ isOpen, onClose, onSave }) =>
                       name="isbn"
                       value={formData.isbn}
                       onChange={handleInputChange}
-                      placeholder="xxxxxxx"
+                      placeholder="978-xxx"
                       className={styles.input}
+                      required
                     />
                   </div>
                 </div>
@@ -182,7 +206,7 @@ const AddMaterial: React.FC<AddMaterialProps> = ({ isOpen, onClose, onSave }) =>
                 <div className={styles.formRow}>
                   <div className={styles.formGroup}>
                     <label htmlFor="author" className={styles.label}>
-                      Autor:
+                      Autor: *
                     </label>
                     <input
                       type="text"
@@ -192,12 +216,13 @@ const AddMaterial: React.FC<AddMaterialProps> = ({ isOpen, onClose, onSave }) =>
                       onChange={handleInputChange}
                       placeholder="Machado de Assis"
                       className={styles.input}
+                      required
                     />
                   </div>
 
                   <div className={styles.formGroupSmall}>
                     <label htmlFor="year" className={styles.label}>
-                      Ano de publicação
+                      Ano de publicação *
                     </label>
                     <input
                       type="text"
@@ -205,14 +230,15 @@ const AddMaterial: React.FC<AddMaterialProps> = ({ isOpen, onClose, onSave }) =>
                       name="year"
                       value={formData.year}
                       onChange={handleInputChange}
-                      placeholder="000"
+                      placeholder="2024"
                       className={styles.input}
+                      required
                     />
                   </div>
 
                   <div className={styles.formGroupSmall}>
                     <label htmlFor="publisher" className={styles.label}>
-                      Editora
+                      Editora *
                     </label>
                     <select
                       id="publisher"
@@ -220,11 +246,37 @@ const AddMaterial: React.FC<AddMaterialProps> = ({ isOpen, onClose, onSave }) =>
                       value={formData.publisher}
                       onChange={handleInputChange}
                       className={styles.select}
+                      required
                     >
                       <option value="">Selecionar</option>
-                      <option value="Companhia das Letras">Companhia das Letras</option>
-                      <option value="Record">Record</option>
-                      <option value="Globo Livros">Globo Livros</option>
+                      {editoras.map((editora) => (
+                        <option key={editora.id} value={editora.id}>
+                          {editora.nome}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className={styles.formRow}>
+                  <div className={styles.formGroup}>
+                    <label htmlFor="genre" className={styles.label}>
+                      Gênero: *
+                    </label>
+                    <select
+                      id="genre"
+                      name="genre"
+                      value={formData.genre}
+                      onChange={handleInputChange}
+                      className={styles.select}
+                      required
+                    >
+                      <option value="">Selecionar gênero</option>
+                      {generos.map((genero) => (
+                        <option key={genero.id} value={genero.id}>
+                          {genero.nome}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -248,7 +300,11 @@ const AddMaterial: React.FC<AddMaterialProps> = ({ isOpen, onClose, onSave }) =>
 
             {/* Botões de ação */}
             <div className={styles.actions}>
-              <button type="button" onClick={handleClose} className={styles.cancelButton}>
+              <button
+                type="button"
+                onClick={handleClose}
+                className={styles.cancelButton}
+              >
                 Cancelar
               </button>
               <button type="submit" className={styles.saveButton}>

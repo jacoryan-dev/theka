@@ -1,4 +1,4 @@
-/* ===== BASE STYLES (MOBILE FIRST) ===== */
+/* Estilos base (mobile primeiro) */
 
 .overlay {
   display: none;
@@ -44,7 +44,7 @@
   gap: 32px;
 }
 
-/* ===== SEÇÃO DE IMAGEM ===== */
+/* Seção de imagem da capa */
 
 .imageSection {
   display: flex;
@@ -84,7 +84,7 @@
   object-fit: cover;
 }
 
-/* ===== SEÇÃO DE CAMPOS ===== */
+/* Seção de campos do formulário */
 
 .fieldsSection {
   display: flex;
@@ -182,7 +182,7 @@
   color: #7e7e7d;
 }
 
-/* ===== BOTÕES DE AÇÃO ===== */
+/* Botões de ação */
 
 .actions {
   display: flex;
@@ -312,7 +312,7 @@
   background-color: #b71c1c;
 }
 
-/* ===== DESKTOP STYLES (@media min-width: 992px) ===== */
+/* Desktop (992px ou mais) */
 
 @media (min-width: 992px) {
   .overlay {

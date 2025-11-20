@@ -1,4 +1,4 @@
-/*ESTILOS BASE (MOBILE-FIRST) */
+/* Estilos base (mobile primeiro) */
 
 :root {
   --primary-wine: #81013a;
@@ -28,14 +28,14 @@
   text-align: center;
 }
 
-/* Layout Principal (Mobile = Coluna Única) */
+/* Layout principal (mobile = coluna única) */
 .layout {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-/* SEÇÃO DO MAPA (MOBILE) */
+/* Seção do mapa (mobile) */
 
 .mapSection {
   display: flex;
@@ -66,16 +66,14 @@
   padding: 0.75rem 1.25rem;
   border: 2px solid var(--border-light);
   border-radius: 50px;
-  background-color:  var(--text-muted);
-  color:#ffffff;
+  background-color: var(--text-muted);
+  color: #ffffff;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: flex-start;
 }
-
-
 
 .pillButton.active {
   background-color: var(--primary-wine);
@@ -93,7 +91,7 @@
   margin: 0;
 }
 
-/* SEÇÃO DO FORMULÁRIO (MOBILE)*/
+/* Seção do formulário (mobile) */
 
 .formSection {
   width: 100%;
@@ -128,35 +126,36 @@
 
 .label {
   font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-dark);
+  font-weight: 700;
+  color: #81013a;
 }
 
 .input {
   width: 100%;
-  padding: 0.85rem 1rem;
+  padding: 0.75rem 1rem;
   font-size: 0.95rem;
-  color: var(--text-dark);
-  background-color: #ffffff;
-  border: 2px solid var(--border-light);
-  border-radius: 8px;
+  color: #222;
+  background-color: #fff;
+  border: 2px solid #81013a;
+  border-radius: 30px;
   outline: none;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .input::placeholder {
-  color: #aaaaaa;
+  color: #bbbbbb;
 }
 
 .input:focus {
-  border-color: var(--primary-wine);
-  box-shadow: 0 0 0 3px rgba(129, 1, 58, 0.08);
+  border-color: #81013a;
+  box-shadow: 0 0 0 6px rgba(129, 1, 58, 0.06);
 }
 
 .textarea {
   min-height: 100px;
   resize: vertical;
   font-family: inherit;
+  border-radius: 20px;
 }
 
 /* Botões do Formulário */
@@ -214,8 +213,7 @@
   height: 18px;
 }
 
-/*RESPONSIVIDADE*/
-/* TABLET (576px+) */
+/* Responsividade - Tablet (576px ou mais) */
 
 @media (min-width: 576px) {
   .container {
@@ -249,7 +247,7 @@
   }
 }
 
-/*DESKTOP (768px+)*/
+/* Desktop (768px ou mais) */
 
 @media (min-width: 768px) {
   .container {
@@ -299,7 +297,7 @@
   }
 }
 
-/* TELAS GRANDES (1024px+) */
+/* Telas grandes (1024px ou mais) */
 
 @media (min-width: 1024px) {
   .layout {
@@ -324,7 +322,7 @@
   }
 }
 
-/* TELAS GRANDES (1440px+) */
+/* Telas muito grandes (1440px ou mais) */
 
 @media (min-width: 1440px) {
   .mapPlaceholder {

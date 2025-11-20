@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styles from "./Acervo.module.css";
 import AddMaterial, {
   type MaterialData as AddMaterialData,
@@ -7,23 +7,12 @@ import EditMaterial, {
   type MaterialData as EditMaterialData,
 } from "../../pages/EditMaterial/EditMaterial";
 import ViewMaterial from "../../pages/ViewMaterial/ViewMaterial";
+import { livrosService } from "../../services/livrosService";
+import { useToast } from "../../hooks/useToast";
+import type { Livro, Genero, Editora } from "../../types";
 
-// Imagens do acervo
+// Imagem placeholder para livros sem capa
 import livro1 from "../../assets/livro1.png";
-import livro2 from "../../assets/livro2.png";
-import livro3 from "../../assets/livro3.png";
-import catalogo3 from "../../assets/catalogo3.png";
-import catalogo4 from "../../assets/catalogo4.png";
-import catalogo5 from "../../assets/catalogo5.png";
-import catalogo6 from "../../assets/catalogo6.png";
-import catalogo7 from "../../assets/catalogo7.png";
-import catalogo8 from "../../assets/catalogo8.png";
-import catalogo9 from "../../assets/catalogo9.png";
-import catalogo10 from "../../assets/catalogo10.png";
-import catalogo11 from "../../assets/catalogo11.png";
-import catalogo12 from "../../assets/catalogo12.png";
-import catalogo13 from "../../assets/catalogo13.png";
-import catalogo14 from "../../assets/catalogo14.png";
 
 interface Book {
   id: number;
@@ -38,6 +27,7 @@ const Acervo: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [genre, setGenre] = useState("");
   const [publisher, setPublisher] = useState("");
+  const { showInfo } = useToast();
 
   // Estados para os modais
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -45,85 +35,76 @@ const Acervo: React.FC = () => {
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
 
-  // Mock de livros para o acordeon "Novidades da semana"
-  const featuredBooks: Book[] = [
-    {
-      id: 1,
-      title: "A CABEÇA DO SANTO",
-      author: "Socorro Acioli",
-      year: 2014,
-      cover: livro1,
-      color: "#FFD700",
-    },
-    {
-      id: 2,
-      title: "A BIBLIOTECA DA MEIA-NOITE",
-      author: "Matt Haig",
-      year: 2020,
-      cover: catalogo3,
-      color: "#2E7D32",
-    },
-    {
-      id: 3,
-      title: "CANÇÃO PARA NINAR MENINO GRANDE",
-      author: "Autor",
-      year: 2021,
-      cover: catalogo5,
-      color: "#8D6E63",
-    },
-    {
-      id: 4,
-      title: "ORAÇÃO PARA DESAPARECER",
-      author: "Autor",
-      year: 2022,
-      cover: livro2,
-      color: "#4FC3F7",
-    },
-  ];
+  // Estados para dados da API
+  const [livros, setLivros] = useState<Livro[]>([]);
+  const [novidades, setNovidades] = useState<Livro[]>([]);
+  const [generos, setGeneros] = useState<Genero[]>([]);
+  const [editoras, setEditoras] = useState<Editora[]>([]);
+  const [currentPage] = useState(1);
 
-  // Mock de livros para o catálogo
-  const images = [
-    livro1,
-    livro2,
-    livro3,
-    catalogo3,
-    catalogo4,
-    catalogo5,
-    catalogo6,
-    catalogo7,
-    catalogo8,
-    catalogo9,
-    catalogo10,
-    catalogo11,
-    catalogo12,
-    catalogo13,
-    catalogo14,
-  ];
+  const loadInitialData = useCallback(async () => {
+    try {
+      const [novidadesData, generosData, editorasData] = await Promise.all([
+        livrosService.getNovidades(),
+        livrosService.getGeneros(),
+        livrosService.getEditoras(),
+      ]);
 
-  const catalogTitles = [
-    "A CABEÇA DO SANTO",
-    "ORAÇÃO PARA DESAPARECER",
-    "A BIBLIOTECA DA MEIA-NOITE",
-    "YUUUNA",
-    "CANÇÃO PARA NINAR MENINO GRANDE",
-    "TRÊS",
-    "A MULHER QUE MATOU OS PEIXES",
-    "GAROTA, MULHER, OUTRAS",
-    "TAYLOR JENKINS REID",
-    "AMORES VERDADEIROS",
-    "DAISY JONES",
-    "TORTO ARADO",
-    "MULHERES",
-    "A PIOR PESSOA DO MUNDO",
-    "VIOLA DAVIS",
-  ];
+      setNovidades(novidadesData);
+      setGeneros(generosData);
+      setEditoras(editorasData);
+    } catch (error) {
+      console.error("Erro ao carregar dados iniciais:", error);
+      showInfo("Erro ao carregar dados. Tente novamente.");
+    }
+  }, [showInfo]);
 
-  const catalogBooks: Book[] = catalogTitles.map((title, idx) => ({
-    id: idx + 1,
-    title,
-    author: idx % 2 === 0 ? "Autor" : "Vários",
-    year: 2019 + (idx % 6),
-    cover: images[idx % images.length],
+  const loadLivros = useCallback(async () => {
+    try {
+      const filters: Record<string, string | number> = {
+        page: currentPage,
+        page_size: 12,
+      };
+
+      if (searchTerm) filters.search = searchTerm;
+      if (genre) filters.genero = parseInt(genre);
+      if (publisher) filters.editora = parseInt(publisher);
+
+      const response = await livrosService.getLivros(filters);
+      setLivros(response.results);
+    } catch (error) {
+      console.error("Erro ao carregar livros:", error);
+      showInfo("Erro ao carregar livros. Tente novamente.");
+    }
+  }, [searchTerm, genre, publisher, currentPage, showInfo]);
+
+  // Carregar dados iniciais
+  useEffect(() => {
+    loadInitialData();
+  }, [loadInitialData]);
+
+  // Carregar livros quando filtros mudarem
+  useEffect(() => {
+    loadLivros();
+  }, [loadLivros]);
+
+  // Converter livros da API para o formato do componente
+  const featuredBooks: Book[] = novidades.map((livro) => ({
+    id: livro.id,
+    title: livro.titulo,
+    author: livro.autor,
+    year: livro.ano_publicacao,
+    cover: livro.capa || livro1,
+    color: "#FFD700",
+  }));
+
+  // Converter livros da API para o formato do componente
+  const catalogBooks: Book[] = livros.map((livro) => ({
+    id: livro.id,
+    title: livro.titulo,
+    author: livro.autor,
+    year: livro.ano_publicacao,
+    cover: livro.capa || livro1,
     color: "#EAEAEA",
   }));
 
@@ -136,9 +117,102 @@ const Acervo: React.FC = () => {
     setIsAddModalOpen(false);
   };
 
-  const handleSaveNewMaterial = (material: AddMaterialData) => {
-    console.log("Novo material salvo:", material);
-    // Aqui você integraria com sua API para salvar o material
+  const handleSaveNewMaterial = async (material: AddMaterialData) => {
+    try {
+      // Validar campos obrigatórios
+      if (
+        !material.title ||
+        !material.author ||
+        !material.isbn ||
+        !material.year
+      ) {
+        showInfo("Por favor, preencha todos os campos obrigatórios.");
+        return;
+      }
+
+      if (!material.genre || material.genre === "") {
+        showInfo("Por favor, selecione um gênero.");
+        return;
+      }
+
+      if (!material.publisher || material.publisher === "") {
+        showInfo("Por favor, selecione uma editora.");
+        return;
+      }
+
+      // Validar se o ano é um número válido
+      const year = parseInt(material.year);
+      if (isNaN(year) || year < 1000 || year > 9999) {
+        showInfo("Por favor, insira um ano válido (ex: 2024).");
+        return;
+      }
+
+      // Buscar nomes de gênero e editora pelos IDs
+      const generoSelecionado = generos.find(
+        (g) => g.id === parseInt(material.genre)
+      );
+      const editoraSelecionada = editoras.find(
+        (e) => e.id === parseInt(material.publisher)
+      );
+
+      if (!generoSelecionado || !editoraSelecionada) {
+        showInfo("Erro ao processar gênero ou editora selecionados.");
+        return;
+      }
+
+      await livrosService.createLivro({
+        titulo: material.title,
+        autor: material.author,
+        isbn: material.isbn,
+        ano_publicacao: year,
+        resumo: material.summary || undefined,
+        numero_paginas: material.pages ? parseInt(material.pages) : undefined,
+        capa:
+          material.coverImage instanceof File ? material.coverImage : undefined,
+        genero: generoSelecionado.nome,
+        editora: editoraSelecionada.nome,
+      });
+
+      showInfo("Livro adicionado com sucesso!");
+      loadLivros(); // Recarregar lista
+      loadInitialData(); // Recarregar novidades
+      handleCloseAddModal();
+    } catch (error) {
+      console.error("Erro ao adicionar livro:", error);
+
+      // Tentar extrair mensagem de erro específica da API
+      const err = error as {
+        response?: {
+          data?: Record<string, string[] | string>;
+          status?: number;
+        };
+      };
+
+      if (err.response?.data) {
+        console.error("Detalhes do erro:", err.response.data);
+
+        // Tentar extrair mensagens de erro específicas
+        const errorData = err.response.data;
+        const errorMessages: string[] = [];
+
+        Object.entries(errorData).forEach(([field, messages]) => {
+          if (Array.isArray(messages)) {
+            errorMessages.push(`${field}: ${messages.join(", ")}`);
+          } else if (typeof messages === "string") {
+            errorMessages.push(`${field}: ${messages}`);
+          }
+        });
+
+        if (errorMessages.length > 0) {
+          showInfo(`Erro: ${errorMessages.join("; ")}`);
+          return;
+        }
+      }
+
+      showInfo(
+        "Erro ao adicionar livro. Verifique os dados e tente novamente."
+      );
+    }
   };
 
   const handleOpenViewModal = (book: Book) => {
@@ -151,11 +225,6 @@ const Acervo: React.FC = () => {
     setSelectedBook(null);
   };
 
-  const handleOpenEditModal = (book: Book) => {
-    setSelectedBook(book);
-    setIsEditModalOpen(true);
-  };
-
   const handleCloseEditModal = () => {
     setIsEditModalOpen(false);
     setSelectedBook(null);
@@ -166,97 +235,129 @@ const Acervo: React.FC = () => {
     setIsEditModalOpen(true);
   };
 
-  const handleSaveEditMaterial = (material: EditMaterialData) => {
-    console.log("Material editado:", material);
-    // Aqui você integraria com sua API para atualizar o material
+  const handleSaveEditMaterial = async (material: EditMaterialData) => {
+    if (!selectedBook) return;
+
+    try {
+      await livrosService.updateLivro(selectedBook.id, {
+        titulo: material.title,
+        autor: material.author,
+        isbn: material.isbn,
+        ano_publicacao: parseInt(material.year),
+        descricao: material.summary,
+        capa: material.coverImage || undefined,
+      });
+
+      showInfo("Livro atualizado com sucesso!");
+      loadLivros(); // Recarregar lista
+      handleCloseEditModal();
+    } catch (error) {
+      console.error("Erro ao atualizar livro:", error);
+      showInfo("Erro ao atualizar livro. Tente novamente.");
+    }
   };
 
-  const handleDeleteMaterial = () => {
-    console.log("Material deletado:", selectedBook?.id);
-    // Aqui você integraria com sua API para deletar o material
+  const handleDeleteMaterial = async () => {
+    if (!selectedBook) return;
+
+    try {
+      await livrosService.deleteLivro(selectedBook.id);
+      showInfo("Livro deletado com sucesso!");
+      loadLivros(); // Recarregar lista
+      handleCloseEditModal();
+      handleCloseViewModal();
+    } catch (error) {
+      console.error("Erro ao deletar livro:", error);
+      showInfo("Erro ao deletar livro. Tente novamente.");
+    }
   };
 
   return (
     <div className={styles.acervo}>
       {/* Seção 1: Novidades da semana - Acordeon */}
-      <section className={styles.featuredSection}>
-        <div className={styles.featuredHeader}>
-          <h2 className={styles.sectionTitle}>Novidades da semana</h2>
+      {featuredBooks.length > 0 && (
+        <section className={styles.featuredSection}>
+          <div className={styles.featuredHeader}>
+            <h2 className={styles.sectionTitle}>Novidades da semana</h2>
 
-          <div className={styles.bookInfo}>
-            <h3>{featuredBooks[0].title}</h3>
-            <p>
-              {featuredBooks[0].author} - {featuredBooks[0].year}
-            </p>
-          </div>
-        </div>
-
-        <div className={styles.accordion}>
-          {/* Livro principal expandido */}
-          <div className={styles.mainBook}>
-            <img
-              src={featuredBooks[0].cover}
-              alt={featuredBooks[0].title}
-              className={styles.mainBookImage}
-            />
-            <button className={styles.expandBtn} aria-label="Expandir">
-              <svg
-                width="43"
-                height="43"
-                viewBox="0 0 43 43"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M42.51 21.255C42.51 32.7892 33.0392 42.26 21.505 42.26C9.97082 42.26 0.5 32.7892 0.5 21.255C0.5 9.72082 9.97082 0.25 21.505 0.25C33.0392 0.25 42.51 9.72082 42.51 21.255Z"
-                  fill="#393939"
-                />
-                <path
-                  d="M14.7513 21.255L21.5048 14.5015L28.2583 21.255M21.5048 27.2585V14.9265"
-                  stroke="#F2F2F1"
-                  strokeWidth="2.1255"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+            <div className={styles.bookInfo}>
+              <h3>{featuredBooks[0].title}</h3>
+              <p>
+                {featuredBooks[0].author} - {featuredBooks[0].year}
+              </p>
+            </div>
           </div>
 
-          {/* Slices dos outros livros */}
-          <div className={styles.bookSlices}>
-            {featuredBooks.slice(1).map((book) => (
-              <div key={book.id} className={styles.bookSlice}>
-                <img
-                  src={book.cover}
-                  alt={book.title}
-                  className={styles.sliceImage}
-                />
-                <button className={styles.sliceExpandBtn} aria-label="Expandir">
-                  <svg
-                    width="43"
-                    height="43"
-                    viewBox="0 0 43 43"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+          <div className={styles.accordion}>
+            {/* Livro principal expandido */}
+            <div className={styles.mainBook}>
+              <img
+                src={featuredBooks[0].cover}
+                alt={featuredBooks[0].title}
+                className={styles.mainBookImage}
+              />
+              <button className={styles.expandBtn} aria-label="Expandir">
+                <svg
+                  width="43"
+                  height="43"
+                  viewBox="0 0 43 43"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M42.51 21.255C42.51 32.7892 33.0392 42.26 21.505 42.26C9.97082 42.26 0.5 32.7892 0.5 21.255C0.5 9.72082 9.97082 0.25 21.505 0.25C33.0392 0.25 42.51 9.72082 42.51 21.255Z"
+                    fill="#393939"
+                  />
+                  <path
+                    d="M14.7513 21.255L21.5048 14.5015L28.2583 21.255M21.5048 27.2585V14.9265"
+                    stroke="#F2F2F1"
+                    strokeWidth="2.1255"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Slices dos outros livros */}
+            <div className={styles.bookSlices}>
+              {featuredBooks.slice(1).map((book) => (
+                <div key={book.id} className={styles.bookSlice}>
+                  <img
+                    src={book.cover}
+                    alt={book.title}
+                    className={styles.sliceImage}
+                  />
+                  <button
+                    className={styles.sliceExpandBtn}
+                    aria-label="Expandir"
                   >
-                    <path
-                      d="M42.51 21.255C42.51 32.7892 33.0392 42.26 21.505 42.26C9.97082 42.26 0.5 32.7892 0.5 21.255C0.5 9.72082 9.97082 0.25 21.505 0.25C33.0392 0.25 42.51 9.72082 42.51 21.255Z"
-                      fill="#393939"
-                    />
-                    <path
-                      d="M14.7513 21.255L21.5048 14.5015L28.2583 21.255M21.5048 27.2585V14.9265"
-                      stroke="#F2F2F1"
-                      strokeWidth="2.1255"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-              </div>
-            ))}
+                    <svg
+                      width="43"
+                      height="43"
+                      viewBox="0 0 43 43"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M42.51 21.255C42.51 32.7892 33.0392 42.26 21.505 42.26C9.97082 42.26 0.5 32.7892 0.5 21.255C0.5 9.72082 9.97082 0.25 21.505 0.25C33.0392 0.25 42.51 9.72082 42.51 21.255Z"
+                        fill="#393939"
+                      />
+                      <path
+                        d="M14.7513 21.255L21.5048 14.5015L28.2583 21.255M21.5048 27.2585V14.9265"
+                        stroke="#F2F2F1"
+                        strokeWidth="2.1255"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Seção 2: Veja nosso catálogo - Filtros e Busca */}
       <section className={styles.catalogSection}>
@@ -301,9 +402,11 @@ const Acervo: React.FC = () => {
               className={styles.filterSelect}
             >
               <option value="">Gênero</option>
-              <option value="ficcao">Ficção</option>
-              <option value="romance">Romance</option>
-              <option value="biografia">Biografia</option>
+              {generos.map((genero) => (
+                <option key={genero.id} value={genero.id}>
+                  {genero.nome}
+                </option>
+              ))}
             </select>
 
             <select
@@ -312,9 +415,11 @@ const Acervo: React.FC = () => {
               className={styles.filterSelect}
             >
               <option value="">Editora</option>
-              <option value="companhia">Companhia das Letras</option>
-              <option value="record">Record</option>
-              <option value="globo">Globo Livros</option>
+              {editoras.map((editora) => (
+                <option key={editora.id} value={editora.id}>
+                  {editora.nome}
+                </option>
+              ))}
             </select>
 
             <button className={styles.searchBtn}>
@@ -397,6 +502,8 @@ const Acervo: React.FC = () => {
         isOpen={isAddModalOpen}
         onClose={handleCloseAddModal}
         onSave={handleSaveNewMaterial}
+        generos={generos}
+        editoras={editoras}
       />
 
       {selectedBook && (
