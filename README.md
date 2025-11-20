@@ -9,7 +9,7 @@
 
 Uma plataforma moderna e intuitiva para gerenciamento de acervos bibliográficos, desenvolvida com as melhores práticas de desenvolvimento web.
 
-[Funcionalidades](#-funcionalidades) • [Tecnologias](#-tecnologias) • [Instalação](#-instalação) • [Estrutura](#-estrutura-do-projeto) • [API](#-integração-com-api) • [Contribuir](#-como-contribuir)
+[Funcionalidades](#-funcionalidades) • [Tecnologias](#-tecnologias) • [Instalação](#-instalação) • [Estrutura](#-estrutura-do-projeto) • [API](#-integração-com-api)
 
 </div>
 
@@ -303,22 +303,6 @@ npm run test
 - Variáveis CSS para cores e espaçamentos
 - Media queries em ordem crescente
 
----
-
-## 🤝 Como Contribuir
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/NovaFuncionalidade`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/NovaFuncionalidade`)
-5. Abra um Pull Request
-
-### Diretrizes
-
-- Escreva mensagens de commit claras e descritivas
-- Mantenha o código limpo e bem documentado
-- Siga as convenções de código do projeto
-- Adicione testes para novas funcionalidades
 
 ---
 
@@ -328,29 +312,8 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 
 ---
 
-## 👥 Autores
 
-- **Equipe Theka** - [GitHub](https://github.com/jacoryan-dev)
 
----
-
-## 📞 Suporte
-
-Para questões e suporte:
-
-- 📧 Email: contato@theka.com
-- 🌐 Website: [theka.com](https://theka.com)
-- 📱 WhatsApp: (84) 99999-9999
-
----
-
-## 🙏 Agradecimentos
-
-- Equipe de desenvolvimento
-- Comunidade React
-- Contribuidores do projeto
-
----
 
 <div align="center">
 © 2025 EJECT. Todos os direitos reservados.
